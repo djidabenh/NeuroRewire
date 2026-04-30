@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Neuro ReWire - Coordination Catch Fruits</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+</head>
+<body>
+
+<div id="page-app">
+  <aside class="sb">
+    <div class="sb-hd">
+      <div class="sb-sq">
+        <svg viewBox="0 0 24 24">
+          <path d="M9.5 2a2.5 2.5 0 0 1 4.9.44C16.1 3 17.5 4.4 17.5 6c0 .34-.04.67-.11 1H18a3 3 0 0 1 3 3c0 1.1-.6 2.1-1.5 2.6A3 3 0 0 1 18 18h-.5a2.5 2.5 0 0 1-4.9.44A2.5 2.5 0 0 1 9.5 16H9a3 3 0 0 1-1.5-5.6A3 3 0 0 1 9 4h.11A2.5 2.5 0 0 1 9.5 2z"/>
+        </svg>
+      </div>
+      <div class="sb-nm">
+        Neuro ReWire
+        <span id="sidebar-subtitle">Rééducation</span>
+      </div>
+    </div>
+
+    <nav class="sb-nav">
+      <div class="ni" onclick="window.location.href='/dashboard'">
+        <svg viewBox="0 0 24 24">
+          <rect x="3" y="3" width="7" height="7" rx="1"/>
+          <rect x="14" y="3" width="7" height="7" rx="1"/>
+          <rect x="3" y="14" width="7" height="7" rx="1"/>
+          <rect x="14" y="14" width="7" height="7" rx="1"/>
+        </svg>
+        <span id="nav-dashboard">Dashboard</span>
+      </div>
+
+      <div class="ni on" onclick="window.location.href='/exercises'">
+        <svg viewBox="0 0 24 24">
+          <rect x="2" y="6" width="20" height="12" rx="2"/>
+          <path d="M6 12h4M8 10v4"/>
+          <circle cx="15" cy="11" r="1" fill="currentColor"/>
+          <circle cx="18" cy="13" r="1" fill="currentColor"/>
+        </svg>
+        <span id="nav-games">Exercises</span>
+      </div>
+
+      <div class="ni" onclick="window.location.href='/progress'">
+        <svg viewBox="0 0 24 24">
+          <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+        </svg>
+        <span id="nav-progress">Progress</span>
+      </div>
+
+      <div class="ni" onclick="window.location.href='/settings'">
+        <svg viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+        </svg>
+        <span id="nav-settings">Settings</span>
+      </div>
+    </nav>
+
+    <div class="sb-bt">
+      <div class="sb-ll">
+        <button class="slp" id="lang-fr" onclick="setGameLang('fr')">FR</button>
+        <button class="slp on" id="lang-ar" onclick="setGameLang('ar')">AR</button>
+        <button class="slp" id="lang-en" onclick="setGameLang('en')">EN</button>
+      </div>
+      <button class="logbtn" onclick="logout()">
+        <svg viewBox="0 0 24 24">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+          <polyline points="16 17 21 12 16 7"/>
+          <line x1="21" y1="12" x2="9" y2="12"/>
+        </svg>
+        <span id="logout-text">Logout</span>
+      </button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="sec on" id="sec-game">
+      <div class="back-btn" onclick="leaveGame()">
+        <svg viewBox="0 0 24 24">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+        <span id="back-text">Back</span>
+      </div>
+
+      <div class="game-hero">
+        <div class="game-hero-copy">
+          <h2 id="game-title">Attraper les fruits</h2>
+          <p id="game-subtitle">Attrapez les fruits qui tombent avec le panier.</p>
+        </div>
+
+        <div class="game-hero-badge">
+          <div class="ib lg">
+            <svg viewBox="0 0 24 24">
+              <path d="M6 8h12l-1 9H7L6 8z"/>
+              <path d="M9 8V6a3 3 0 0 1 6 0v2"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="game-shell game-shell-memory">
+        <div class="game-topbar">
+          <div class="game-pill" id="game-round-label">Niveau 1 / 6</div>
+          <div class="game-pill game-pill-score" id="game-score-label">Score : 0</div>
+        </div>
+
+        <div id="coordination-catch-root"></div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script type="module" src="{{ url_for('static', filename='js/game-coordination-catch-fruits.js') }}"></script>
+</body>
+</html>

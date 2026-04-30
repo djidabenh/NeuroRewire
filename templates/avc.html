@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neuro ReWire - AVC Prevention</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+</head>
+<body>
+
+<div class="page active" id="page-app" style="display:flex;">
+    <aside class="sb">
+        <div class="sb-hd">
+            <div class="sb-sq">
+                <svg viewBox="0 0 24 24">
+                    <path d="M9.5 2a2.5 2.5 0 0 1 4.9.44C16.1 3 17.5 4.4 17.5 6c0 .34-.04.67-.11 1H18a3 3 0 0 1 3 3c0 1.1-.6 2.1-1.5 2.6A3 3 0 0 1 18 18h-.5a2.5 2.5 0 0 1-4.9.44A2.5 2.5 0 0 1 9.5 16H9a3 3 0 0 1-1.5-5.6A3 3 0 0 1 9 4h.11A2.5 2.5 0 0 1 9.5 2z"/>
+                </svg>
+            </div>
+            <div class="sb-nm">
+                Neuro ReWire
+                <span id="sidebar-subtitle">الوقاية والتوعية — AVC</span>
+            </div>
+        </div>
+
+        <nav class="sb-nav">
+            <div class="ni" onclick="window.location.href='/dashboard'">
+                <svg viewBox="0 0 24 24">
+                    <rect x="3" y="3" width="7" height="7" rx="1"/>
+                    <rect x="14" y="3" width="7" height="7" rx="1"/>
+                    <rect x="3" y="14" width="7" height="7" rx="1"/>
+                    <rect x="14" y="14" width="7" height="7" rx="1"/>
+                </svg>
+                <span id="nav-dashboard">الرئيسية</span>
+            </div>
+
+            <div class="ni" onclick="window.location.href='/exercises'">
+                 <svg viewBox="0 0 24 24">
+                    <rect x="2" y="6" width="20" height="12" rx="2"/>
+                    <path d="M6 12h4M8 10v4"/>
+                    <circle cx="15" cy="11" r="1" fill="currentColor"/>
+                    <circle cx="18" cy="13" r="1" fill="currentColor"/>
+                 </svg>
+                      <span id="nav-exercises">التمارين</span>
+            </div>
+
+            <div class="ni" onclick="window.location.href='/progress'">
+                <svg viewBox="0 0 24 24">
+                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                </svg>
+                <span id="nav-progress">التقدم</span>
+            </div>
+
+            <div class="ni on">
+                <svg viewBox="0 0 24 24">
+                    <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                </svg>
+                <span id="nav-avc">الوقاية من السكتة الدماغية</span>
+            </div>
+
+            <div class="ni">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/>
+                </svg>
+                <span id="nav-motor">الحركي والتقييم</span>
+            </div>
+
+            <div class="ni" onclick="window.location.href='/settings'">
+                <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="3"/>
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                </svg>
+                <span id="nav-settings">الإعدادات</span>
+            </div>
+        </nav>
+
+        <div class="sb-bt">
+            <div class="sb-ll">
+                <button class="slp" type="button" onclick="setAvcLang('fr')">FR</button>
+                <button class="slp on" type="button" onclick="setAvcLang('ar')">AR</button>
+                <button class="slp" type="button" onclick="setAvcLang('en')">EN</button>
+            </div>
+
+            <button class="logbtn" onclick="logout()">
+                <svg viewBox="0 0 24 24">
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+                    <polyline points="16 17 21 12 16 7"/>
+                    <line x1="21" y1="12" x2="9" y2="12"/>
+                </svg>
+                <span id="logout-text">تسجيل الخروج</span>
+            </button>
+        </div>
+    </aside>
+
+    <main class="main">
+        <div class="sec on" style="display:block;">
+            <div class="avc-hero">
+                <h2 id="avc-title">الوقاية والتوعية — AVC</h2>
+                <p id="avc-subtitle">معلومات لفهم الحالة ودعم رحلة التعافي</p>
+            </div>
+
+            <div class="avc-msg">
+                <div class="avc-msg-icon">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                    </svg>
+                </div>
+                <div>
+                    <h3 id="avc-msg-title">أنت لست وحدك — التعافي ممكن</h3>
+                    <p id="avc-msg-text">العديد من المرضى الذين أصيبوا بسكتة دماغية يتحسنون ويستعيدون حياة طبيعية. التمارين المعرفية اليومية تساعد الدماغ على بناء روابط جديدة — وهذا ما يسمى بالمرونة العصبية. كل تمرين تقوم به يحسن حالتك، استمر!</p>
+                </div>
+            </div>
+
+            <div class="avc-grid" id="avc-grid"></div>
+
+            <div class="ch-c" style="margin-bottom:18px">
+                <div class="ch-t" id="fast-title">طريقة FAST — التعرّف على السكتة</div>
+                <div class="avc-fast" id="fast-grid"></div>
+            </div>
+
+            <div class="myth-list" id="myth-list"></div>
+        </div>
+    </main>
+</div>
+
+<script type="module">
+    import { auth } from "/static/js/firebase-config.js";
+    import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+    const avcTranslations = {
+        ar: {
+            dir: "rtl",
+            lang: "ar",
+            sidebarSubtitle: "الوقاية والتوعية — AVC",
+            navDashboard: "الرئيسية",
+            navExercises: "التمارين",
+            navProgress: "التقدم",
+            navAvc: "الوقاية من السكتة الدماغية",
+            navMotor: "الحركي والتقييم",
+            navSettings: "الإعدادات",
+            logout: "تسجيل الخروج",
+            avc_h: "الوقاية والتوعية — AVC",
+            avc_s: "معلومات لفهم الحالة ودعم رحلة التعافي",
+            avc_msg_h: "أنت لست وحدك — التعافي ممكن",
+            avc_msg_p: "العديد من المرضى الذين أصيبوا بسكتة دماغية يتحسنون ويستعيدون حياة طبيعية. التمارين المعرفية اليومية تساعد الدماغ على بناء روابط جديدة — وهذا ما يسمى بالمرونة العصبية. كل تمرين تقوم به يحسن حالتك، استمر!",
+            fast_h: "طريقة FAST — التعرّف على السكتة"
+        },
+        fr: {
+            dir: "ltr",
+            lang: "fr",
+            sidebarSubtitle: "Prévention & Sensibilisation — AVC",
+            navDashboard: "Accueil",
+            navExercises: "Exercices",
+            navProgress: "Progrès",
+            navAvc: "Prévention AVC",
+            navMotor: "Moteur et Bilan",
+            navSettings: "Paramètres",
+            logout: "Déconnexion",
+            avc_h: "Prévention & Sensibilisation — AVC",
+            avc_s: "Informations pour comprendre et favoriser votre rétablissement",
+            avc_msg_h: "Vous n'êtes pas seul — La récupération est possible",
+            avc_msg_p: "De nombreux patients ayant subi un AVC récupèrent et retrouvent une vie normale. Les exercices cognitifs quotidiens aident votre cerveau à créer de nouvelles connexions — c'est la neuroplasticité. Chaque exercice améliore votre état, continuez !",
+            fast_h: "Méthode FAST — Reconnaître un AVC"
+        },
+        en: {
+            dir: "ltr",
+            lang: "en",
+            sidebarSubtitle: "Stroke Prevention & Awareness",
+            navDashboard: "Home",
+            navExercises: "Exercises",
+            navProgress: "Progress",
+            navAvc: "Stroke Prevention",
+            navMotor: "Motor & Assessment",
+            navSettings: "Settings",
+            logout: "Log out",
+            avc_h: "Stroke Prevention & Awareness",
+            avc_s: "Information to understand stroke and support your recovery",
+            avc_msg_h: "You are not alone — Recovery is possible",
+            avc_msg_p: "Many stroke patients recover and regain a normal life. Daily cognitive exercises help your brain build new connections — this is neuroplasticity. Every exercise improves your condition, keep going!",
+            fast_h: "FAST Method — Recognize a Stroke"
+        }
+    };
+
+    const AVC_DATA = {
+        ar: {
+            cards: [
+                {
+                    t: "ما هي السكتة الدماغية؟",
+                    p: "تحدث السكتة الدماغية عندما ينقطع تدفق الدم إلى جزء من الدماغ، فتُحرم الخلايا من الأكسجين. يوجد نوعان: إقفارية (انسداد) ونزفية (تمزق وعاء دموي).",
+                    cl: ""
+                },
+                {
+                    t: "علامات الإنذار",
+                    p: "• خدر مفاجئ في الوجه أو الذراع أو الساق\n• صعوبة مفاجئة في الكلام أو الفهم\n• اضطرابات مفاجئة في الرؤية\n• صداع شديد ومفاجئ\n• فقدان التوازن أو صعوبة المشي",
+                    cl: "warn"
+                },
+                {
+                    t: "التعافي والأمل",
+                    p: "يتحسن كثير من المرضى بفضل:\n• التأهيل المبكر\n• التمارين المعرفية اليومية\n• دعم العائلة\n\nدماغك قادر على التعلّم من جديد!",
+                    cl: "green"
+                }
+            ],
+            fast: [
+                { L: "F", t: "الوجه", d: "هل يوجد تدلٍّ في جانب من الوجه؟", c: "#3D8FA0" },
+                { L: "A", t: "الذراع", d: "هل تهبط إحدى الذراعين عند رفعهما؟", c: "#5AAABB" },
+                { L: "S", t: "الكلام", d: "هل الكلام متداخل أو غير طبيعي؟", c: "#2C7080" },
+                { L: "T", t: "الوقت", d: "اتصل بالإسعاف فورًا!", c: "#C0514A" }
+            ],
+            myths: {
+                h: "خرافات وحقائق",
+                items: [
+                    { m: "السكتة تصيب كبار السن فقط", f: "يمكن أن تحدث في أي عمر" },
+                    { m: "لا يمكن الوقاية من السكتة", f: "80٪ من السكتات يمكن الوقاية منها" },
+                    { m: "التعافي يتوقف بعد 6 أشهر", f: "قد يستمر لسنوات مع التدريب" },
+                    { m: "السكتة تعني فقدان الاستقلالية تمامًا", f: "كثير من المرضى يعودون إلى حياة طبيعية" }
+                ]
+            }
+        },
+        fr: {
+            cards: [
+                {
+                    t: "Qu’est-ce qu’un AVC ?",
+                    p: "Un AVC survient lorsque le flux sanguin vers une partie du cerveau est interrompu, privant les cellules d’oxygène. Il existe deux types : ischémique (blocage) et hémorragique (rupture d’un vaisseau).",
+                    cl: ""
+                },
+                {
+                    t: "Signes d’alerte",
+                    p: "• Engourdissement soudain du visage, du bras ou de la jambe\n• Difficulté soudaine à parler ou à comprendre\n• Troubles soudains de la vision\n• Violente céphalée soudaine\n• Perte d’équilibre ou difficulté à marcher",
+                    cl: "warn"
+                },
+                {
+                    t: "Récupération & Espoir",
+                    p: "De nombreux patients récupèrent grâce à :\n• La rééducation précoce\n• Les exercices cognitifs quotidiens\n• Le soutien familial\n\nVotre cerveau peut réapprendre !",
+                    cl: "green"
+                }
+            ],
+            fast: [
+                { L: "F", t: "Face", d: "Un côté du visage tombe-t-il ?", c: "#3D8FA0" },
+                { L: "A", t: "Arm", d: "Un bras descend-il quand les deux sont levés ?", c: "#5AAABB" },
+                { L: "S", t: "Speech", d: "La parole est-elle trouble ou étrange ?", c: "#2C7080" },
+                { L: "T", t: "Time", d: "Appelez immédiatement les urgences !", c: "#C0514A" }
+            ],
+            myths: {
+                h: "Mythes & Réalités",
+                items: [
+                    { m: "L’AVC touche seulement les personnes âgées", f: "Il peut survenir à tout âge" },
+                    { m: "Un AVC ne peut pas être évité", f: "80% des AVC sont évitables" },
+                    { m: "La récupération s’arrête après 6 mois", f: "Elle peut continuer pendant des années avec la pratique" },
+                    { m: "Un AVC signifie une perte totale d’autonomie", f: "Beaucoup de patients retrouvent une vie normale" }
+                ]
+            }
+        },
+        en: {
+            cards: [
+                {
+                    t: "What is a stroke?",
+                    p: "A stroke occurs when blood flow to part of the brain is interrupted, depriving cells of oxygen. There are two types: ischemic (blockage) and hemorrhagic (burst blood vessel).",
+                    cl: ""
+                },
+                {
+                    t: "Warning signs",
+                    p: "• Sudden numbness in face, arm or leg\n• Sudden difficulty speaking or understanding\n• Sudden vision problems\n• Sudden severe headache\n• Loss of balance or difficulty walking",
+                    cl: "warn"
+                },
+                {
+                    t: "Recovery & Hope",
+                    p: "Many patients recover significantly thanks to:\n• Early rehabilitation\n• Daily cognitive exercises\n• Family support\n\nYour brain can learn again!",
+                    cl: "green"
+                }
+            ],
+            fast: [
+                { L: "F", t: "Face", d: "Is one side of the face drooping?", c: "#3D8FA0" },
+                { L: "A", t: "Arm", d: "Does one arm drift down when both are raised?", c: "#5AAABB" },
+                { L: "S", t: "Speech", d: "Is speech slurred or strange?", c: "#2C7080" },
+                { L: "T", t: "Time", d: "Call emergency services immediately!", c: "#C0514A" }
+            ],
+            myths: {
+                h: "Myths & Facts",
+                items: [
+                    { m: "Stroke only affects elderly people", f: "It can happen at any age" },
+                    { m: "Stroke cannot be prevented", f: "80% of strokes are preventable" },
+                    { m: "Recovery stops after 6 months", f: "It can continue for years with practice" },
+                    { m: "Stroke means total loss of independence", f: "Many patients return to normal life" }
+                ]
+            }
+        }
+    };
+
+    let currentAvcLang = "ar";
+
+    function renderAVC() {
+        const d = AVC_DATA[currentAvcLang] || AVC_DATA.ar;
+
+        document.getElementById("avc-grid").innerHTML = d.cards
+            .map(c => `<div class="avc-card ${c.cl}"><h3>${c.t}</h3><p>${c.p}</p></div>`)
+            .join("");
+
+        document.getElementById("fast-grid").innerHTML = d.fast
+            .map(f => `
+                <div class="fast-card">
+                    <div class="fast-icon" style="background:${f.c}">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"/>
+                            <line x1="12" y1="8" x2="12" y2="12"/>
+                            <line x1="12" y1="16" x2="12.01" y2="16"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h4><span style="font-size:1.2rem;font-weight:800;color:${f.c}">${f.L}</span> — ${f.t}</h4>
+                        <p>${f.d}</p>
+                    </div>
+                </div>
+            `)
+            .join("");
+
+        document.getElementById("myth-list").innerHTML =
+            `<h3>${d.myths.h}</h3>` +
+            d.myths.items
+                .map(m => `
+                    <div class="myth-row">
+                        <div class="myth-x">✗</div>
+                        <div class="myth-txt">
+                            <strong>${m.m}</strong>
+                            <span>✓ ${m.f}</span>
+                        </div>
+                    </div>
+                `)
+                .join("");
+    }
+
+    window.setAvcLang = function(lang) {
+        localStorage.setItem("nrw_lang", lang);
+        const t = avcTranslations[lang];
+        currentAvcLang = lang;
+
+        document.documentElement.lang = t.lang;
+        document.documentElement.dir = t.dir;
+
+        document.getElementById("sidebar-subtitle").textContent = t.sidebarSubtitle;
+        document.getElementById("nav-dashboard").textContent = t.navDashboard;
+        document.getElementById("nav-exercises").textContent = t.navExercises;
+        document.getElementById("nav-progress").textContent = t.navProgress;
+        document.getElementById("nav-avc").textContent = t.navAvc;
+        document.getElementById("nav-motor").textContent = t.navMotor;
+        document.getElementById("nav-settings").textContent = t.navSettings;
+        document.getElementById("logout-text").textContent = t.logout;
+        document.getElementById("avc-title").textContent = t.avc_h;
+        document.getElementById("avc-subtitle").textContent = t.avc_s;
+        document.getElementById("avc-msg-title").textContent = t.avc_msg_h;
+        document.getElementById("avc-msg-text").textContent = t.avc_msg_p;
+        document.getElementById("fast-title").textContent = t.fast_h;
+
+        document.querySelectorAll(".slp").forEach(btn => {
+            btn.classList.remove("on");
+            if (btn.textContent.trim().toLowerCase() === lang) {
+                btn.classList.add("on");
+            }
+        });
+
+        renderAVC();
+    };
+
+    onAuthStateChanged(auth, async (user) => {
+        if (!user) {
+            window.location.href = "/";
+        }
+    });
+
+    window.logout = function() {
+        signOut(auth).then(() => {
+            window.location.href = "/";
+        });
+    };
+
+    const savedLang = localStorage.getItem("nrw_lang") || "ar";
+    setAvcLang(savedLang);
+</script>
+
+</body>
+</html>

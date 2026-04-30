@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Neuro ReWire - Rapid Math</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+</head>
+<body>
+<div id="page-app">
+  <aside class="sb">
+    <div class="sb-hd">
+      <div class="sb-sq">
+        <svg viewBox="0 0 24 24"><path d="M12 3 4 7v6c0 5 3.4 7.7 8 8 4.6-.3 8-3 8-8V7l-8-4z"/></svg>
+      </div>
+      <div class="sb-nm">Neuro ReWire <span id="sidebar-subtitle">Rééducation</span></div>
+    </div>
+
+    <nav class="sb-nav">
+      <div class="ni" onclick="window.location.href='/dashboard'"><span id="nav-dashboard">Dashboard</span></div>
+      <div class="ni on" onclick="window.location.href='/exercises'"><span id="nav-games">Exercises</span></div>
+      <div class="ni" onclick="window.location.href='/progress'"><span id="nav-progress">Progress</span></div>
+      <div class="ni" onclick="window.location.href='/settings'"><span id="nav-settings">Settings</span></div>
+    </nav>
+
+    <div class="sb-bt">
+      <div class="sb-ll">
+        <button class="slp" id="lang-fr" onclick="setGameLang('fr')">FR</button>
+        <button class="slp on" id="lang-ar" onclick="setGameLang('ar')">AR</button>
+        <button class="slp" id="lang-en" onclick="setGameLang('en')">EN</button>
+      </div>
+      <button class="logbtn" onclick="logout()"><span id="logout-text">Logout</span></button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="sec on">
+      <div class="back-btn" onclick="leaveGame()"><span id="back-text">Back</span></div>
+
+      <div class="game-hero quiz-hero quiz-hero-math">
+        <div class="game-hero-copy">
+          <h2 id="game-title">Calcul rapide</h2>
+          <p id="game-subtitle">Opérations simples contre la montre.</p>
+        </div>
+        <div class="game-hero-badge">
+          <div class="ib lg">
+            <svg viewBox="0 0 24 24">
+              <path d="M8 5h8M8 12h8M8 19h8"/>
+              <path d="M12 3v18"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="game-shell game-shell-memory">
+        <div class="game-topbar">
+          <div class="game-pill" id="game-round-label">Niveau 1 / 6</div>
+          <div class="game-pill game-pill-score" id="game-score-label">Score : 0</div>
+        </div>
+        <div id="quiz-math-root"></div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script type="module" src="{{ url_for('static', filename='js/game-quiz-rapid-math.js') }}"></script>
+</body>
+</html>

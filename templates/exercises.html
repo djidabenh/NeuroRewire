@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neuro ReWire - Exercises</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+<div class="page active" id="page-app" style="display:flex;">
+    <aside class="sb">
+        <div class="sb-hd">
+            <div class="sb-sq">
+                <svg viewBox="0 0 24 24">
+                    <path d="M9.5 2a2.5 2.5 0 0 1 4.9.44C16.1 3 17.5 4.4 17.5 6c0 .34-.04.67-.11 1H18a3 3 0 0 1 3 3c0 1.1-.6 2.1-1.5 2.6A3 3 0 0 1 18 18h-.5a2.5 2.5 0 0 1-4.9.44A2.5 2.5 0 0 1 9.5 16H9a3 3 0 0 1-1.5-5.6A3 3 0 0 1 9 4h.11A2.5 2.5 0 0 1 9.5 2z"/>
+                </svg>
+            </div>
+            <div class="sb-nm">
+                Neuro ReWire
+                <span id="sidebar-subtitle">إعادة التأهيل</span>
+            </div>
+        </div>
+
+        <nav class="sb-nav">
+            <div class="ni" onclick="window.location.href='/dashboard'">
+                <svg viewBox="0 0 24 24">
+                    <rect x="3" y="3" width="7" height="7" rx="1"/>
+                    <rect x="14" y="3" width="7" height="7" rx="1"/>
+                    <rect x="3" y="14" width="7" height="7" rx="1"/>
+                    <rect x="14" y="14" width="7" height="7" rx="1"/>
+                </svg>
+                <span id="nav-dashboard">الرئيسية</span>
+            </div>
+
+            <div class="ni on">
+                <svg viewBox="0 0 24 24">
+                    <rect x="2" y="6" width="20" height="12" rx="2"/>
+                    <path d="M6 12h4M8 10v4"/>
+                    <circle cx="15" cy="11" r="1" fill="currentColor"/>
+                    <circle cx="18" cy="13" r="1" fill="currentColor"/>
+                </svg>
+                <span id="nav-exercises">التمارين</span>
+            </div>
+
+            <div class="ni" onclick="window.location.href='/progress'">
+                <svg viewBox="0 0 24 24">
+                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                </svg>
+                <span id="nav-progress">التقدم</span>
+            </div>
+
+            <div class="ni" onclick="window.location.href='/avc'">
+                <svg viewBox="0 0 24 24">
+                    <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                </svg>
+                <span id="nav-avc">الوقاية من السكتة الدماغية</span>
+            </div>
+
+            <div class="ni">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/>
+                </svg>
+                <span id="nav-motor">الحركي والتقييم</span>
+            </div>
+
+            <div class="ni" onclick="window.location.href='/settings'">
+                <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="3"/>
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06A2 2 0 0 1 4.29 17l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                </svg>
+                <span id="nav-settings">الإعدادات</span>
+            </div>
+        </nav>
+
+        <div class="sb-bt">
+            <div class="sb-ll">
+                <button class="slp" id="lang-fr" type="button" onclick="setExercisesLang('fr')">FR</button>
+                <button class="slp" id="lang-ar" type="button" onclick="setExercisesLang('ar')">AR</button>
+                <button class="slp" id="lang-en" type="button" onclick="setExercisesLang('en')">EN</button>
+            </div>
+
+            <button class="logbtn" onclick="logout()">
+                <svg viewBox="0 0 24 24">
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+                    <polyline points="16 17 21 12 16 7"/>
+                    <line x1="21" y1="12" x2="9" y2="12"/>
+                </svg>
+                <span id="logout-text">تسجيل الخروج</span>
+            </button>
+        </div>
+    </aside>
+
+    <main class="main">
+        <div class="sec on" style="display:block;">
+            <div class="ph">
+                <h2 id="cat-title">الفئات</h2>
+                <p id="cat-subtitle">اختر فئة التمرين المناسبة لك</p>
+            </div>
+            <div class="cat-grid" id="cat-grid"></div>
+        </div>
+    </main>
+</div>
+
+<script type="module">
+import { auth } from "/static/js/firebase-config.js";
+import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+const SVG_ICONS = {
+  brain:`<svg viewBox="0 0 24 24"><path d="M9.5 2a2.5 2.5 0 0 1 4.9.44C16.1 3 17.5 4.4 17.5 6c0 .34-.04.67-.11 1H18a3 3 0 0 1 3 3c0 1.1-.6 2.1-1.5 2.6A3 3 0 0 1 18 18h-.5a2.5 2.5 0 0 1-4.9.44A2.5 2.5 0 0 1 9.5 16H9a3 3 0 0 1-1.5-5.6A3 3 0 0 1 9 4h.11A2.5 2.5 0 0 1 9.5 2z"/></svg>`,
+  eye:`<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/></svg>`,
+  hand:`<svg viewBox="0 0 24 24"><path d="M18 11V6a2 2 0 0 0-4 0M14 10V4a2 2 0 0 0-4 0v2M10 10.5V6a2 2 0 0 0-4 0v8M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg>`,
+  robot:`<svg viewBox="0 0 24 24"><rect x="7" y="4" width="10" height="8" rx="2"/><path d="M12 2v2"/><circle cx="10" cy="8" r="1"/><circle cx="14" cy="8" r="1"/><path d="M9 16v4M15 16v4M5 14l2-2M19 14l-2-2"/><rect x="6" y="12" width="12" height="6" rx="2"/></svg>`,
+  pen:`<svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>`,
+  chat:`<svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`,
+  quiz:`<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 1 1 5.82 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`
+};
+
+const TR = {
+  ar: {
+    lang:"ar", dir:"rtl",
+    sidebarSubtitle:"إعادة التأهيل",
+    navDashboard:"الرئيسية",
+    navExercises:"التمارين",
+    navProgress:"التقدم",
+    navAvc:"الوقاية من السكتة الدماغية",
+    navMotor:"الحركي والتقييم",
+    navSettings:"الإعدادات",
+    logout:"تسجيل الخروج",
+    cat_h:"الفئات",
+    cat_s:"اختر فئة التمرين المناسبة لك",
+    c1:"الذاكرة", c1d:"حفظ الصور والترتيب والأزواج",
+    c2:"الانتباه", c2d:"التركيز والتمييز البصري",
+    c3:"التنسيق", c3d:"الإمساك والسحب والتسلسل",
+    c4:"الروبوت", c4d:"قلّد وضعيات وتسلسل الروبوت",
+    c5:"المسار", c5d:"رسم وتتبع الخطوط والأشكال",
+    c6:"اللغة", c6d:"كلمات وصور وتصنيفات",
+    c7:"الاختبارات والسرعة", c7d:"أسئلة معرفية ومقارنات وحساب"
+  },
+  fr: {
+    lang:"fr", dir:"ltr",
+    sidebarSubtitle:"Réhabilitation",
+    navDashboard:"Accueil",
+    navExercises:"Exercices",
+    navProgress:"Progrès",
+    navAvc:"Prévention AVC",
+    navMotor:"Moteur et bilan",
+    navSettings:"Paramètres",
+    logout:"Se déconnecter",
+    cat_h:"Catégories",
+    cat_s:"Choisissez une catégorie d'exercice",
+    c1:"Mémoire", c1d:"Mémorisation, ordre et paires",
+    c2:"Attention", c2d:"Concentration et discrimination visuelle",
+    c3:"Coordination", c3d:"Attraper, glisser et séquences",
+    c4:"Robot", c4d:"Imiter les gestes et séquences",
+    c5:"Trajectoire", c5d:"Tracer lignes, formes et chemins",
+    c6:"Langage", c6d:"Mots, images et associations",
+    c7:"Quiz & rapidité", c7d:"Questions cognitives et calcul rapide"
+  },
+  en: {
+    lang:"en", dir:"ltr",
+    sidebarSubtitle:"Rehabilitation",
+    navDashboard:"Home",
+    navExercises:"Exercises",
+    navProgress:"Progress",
+    navAvc:"Stroke Prevention",
+    navMotor:"Motor and assessment",
+    navSettings:"Settings",
+    logout:"Sign out",
+    cat_h:"Categories",
+    cat_s:"Choose an exercise category",
+    c1:"Memory", c1d:"Image memorization, order and pairs",
+    c2:"Attention", c2d:"Concentration and visual discrimination",
+    c3:"Coordination", c3d:"Catching, drag-drop and sequences",
+    c4:"Robot", c4d:"Imitate postures and gesture sequences",
+    c5:"Trajectory", c5d:"Draw lines, shapes and paths",
+    c6:"Language", c6d:"Words, images and associations",
+    c7:"Quiz & speed", c7d:"Cognitive questions and quick math"
+  }
+};
+
+const CATS = [
+  { id:"memory", icon:"brain", title:"c1", desc:"c1d" },
+  { id:"attention", icon:"eye", title:"c2", desc:"c2d" },
+  { id:"coordination", icon:"hand", title:"c3", desc:"c3d" },
+  { id:"robot", icon:"robot", title:"c4", desc:"c4d" },
+  { id:"trajectory", icon:"pen", title:"c5", desc:"c5d" },
+  { id:"language", icon:"chat", title:"c6", desc:"c6d" },
+  { id:"quiz", icon:"quiz", title:"c7", desc:"c7d" }
+];
+
+let currentLang = localStorage.getItem("nrw_lang") || "ar";
+
+function t(k) {
+  return (TR[currentLang] || TR.ar)[k] || k;
+}
+
+function renderCats() {
+  document.getElementById("cat-grid").innerHTML = CATS.map(cat => `
+    <div class="cat-c" onclick="window.location.href='/exercises/${cat.id}'">
+      <div class="ib md">${SVG_ICONS[cat.icon]}</div>
+      <div class="cat-t">${t(cat.title)}</div>
+      <div class="cat-d">${t(cat.desc)}</div>
+    </div>
+  `).join("");
+}
+
+window.setExercisesLang = function(lang) {
+  localStorage.setItem("nrw_lang", lang);
+  currentLang = lang;
+  const tr = TR[currentLang] || TR.ar;
+
+  document.documentElement.lang = tr.lang;
+  document.documentElement.dir = tr.dir;
+
+  document.getElementById("sidebar-subtitle").textContent = tr.sidebarSubtitle;
+  document.getElementById("nav-dashboard").textContent = tr.navDashboard;
+  document.getElementById("nav-exercises").textContent = tr.navExercises;
+  document.getElementById("nav-progress").textContent = tr.navProgress;
+  document.getElementById("nav-avc").textContent = tr.navAvc;
+  document.getElementById("nav-motor").textContent = tr.navMotor;
+  document.getElementById("nav-settings").textContent = tr.navSettings;
+  document.getElementById("logout-text").textContent = tr.logout;
+  document.getElementById("cat-title").textContent = tr.cat_h;
+  document.getElementById("cat-subtitle").textContent = tr.cat_s;
+
+  document.querySelectorAll(".slp").forEach(btn => btn.classList.remove("on"));
+  const active = document.getElementById(`lang-${currentLang}`);
+  if (active) active.classList.add("on");
+
+  renderCats();
+};
+
+window.logout = function() {
+  signOut(auth).then(() => {
+    window.location.href = "/";
+  });
+};
+
+// applique la langue immédiatement au chargement
+const savedLang = localStorage.getItem("nrw_lang") || "ar";
+setExercisesLang(savedLang);
+
+// puis vérifie l'utilisateur
+onAuthStateChanged(auth, (user) => {
+  if (!user) {
+    window.location.href = "/";
+    return;
+  }
+
+  // on réapplique encore la langue sauvegardée pour être sûr à 100%
+  const savedLang = localStorage.getItem("nrw_lang") || "ar";
+  setExercisesLang(savedLang);
+});
+</script>
+
+</body>
+</html>

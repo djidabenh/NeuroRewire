@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neuro ReWire - Settings</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+</head>
+<body>
+
+<div class="page active" id="page-app" style="display:flex;">
+    <aside class="sb">
+        <div class="sb-hd">
+            <div class="sb-sq">
+                <svg viewBox="0 0 24 24">
+                    <path d="M9.5 2a2.5 2.5 0 0 1 4.9.44C16.1 3 17.5 4.4 17.5 6c0 .34-.04.67-.11 1H18a3 3 0 0 1 3 3c0 1.1-.6 2.1-1.5 2.6A3 3 0 0 1 18 18h-.5a2.5 2.5 0 0 1-4.9.44A2.5 2.5 0 0 1 9.5 16H9a3 3 0 0 1-1.5-5.6A3 3 0 0 1 9 4h.11A2.5 2.5 0 0 1 9.5 2z"/>
+                </svg>
+            </div>
+            <div class="sb-nm">
+                Neuro ReWire
+                <span id="sidebar-subtitle">إعدادات الحساب</span>
+            </div>
+        </div>
+
+        <nav class="sb-nav">
+            <div class="ni" onclick="window.location.href='/dashboard'">
+                <svg viewBox="0 0 24 24">
+                    <rect x="3" y="3" width="7" height="7" rx="1"/>
+                    <rect x="14" y="3" width="7" height="7" rx="1"/>
+                    <rect x="3" y="14" width="7" height="7" rx="1"/>
+                    <rect x="14" y="14" width="7" height="7" rx="1"/>
+                </svg>
+                <span id="nav-dashboard">الرئيسية</span>
+            </div>
+
+            <div class="ni" onclick="window.location.href='/exercises'">
+                 <svg viewBox="0 0 24 24">
+                    <rect x="2" y="6" width="20" height="12" rx="2"/>
+                    <path d="M6 12h4M8 10v4"/>
+                    <circle cx="15" cy="11" r="1" fill="currentColor"/>
+                    <circle cx="18" cy="13" r="1" fill="currentColor"/>
+                 </svg>
+                 <span id="nav-exercises">التمارين</span>
+            </div>
+
+            <div class="ni" onclick="window.location.href='/progress'">
+              <svg viewBox="0 0 24 24">
+                   <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+             </svg>
+              <span id="nav-progress">التقدم</span>
+            </div>  
+
+            <div class="ni" onclick="window.location.href='/avc'">
+              <svg viewBox="0 0 24 24">
+                  <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+              </svg>
+              <span id="nav-avc">الوقاية من السكتة الدماغية</span>
+            </div>
+
+            <div class="ni">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/>
+                </svg>
+                <span id="nav-motor">الحركي والتقييم</span>
+            </div>
+
+            <div class="ni on">
+                <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="3"/>
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                </svg>
+                <span id="nav-settings">الإعدادات</span>
+            </div>
+        </nav>
+
+        <div class="sb-bt">
+            <div class="sb-ll">
+                <button class="slp" type="button" onclick="setSettingsLang('fr')">FR</button>
+                <button class="slp on" type="button" onclick="setSettingsLang('ar')">AR</button>
+                <button class="slp" type="button" onclick="setSettingsLang('en')">EN</button>
+            </div>
+
+            <button class="logbtn" onclick="logout()">
+                <svg viewBox="0 0 24 24">
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+                    <polyline points="16 17 21 12 16 7"/>
+                    <line x1="21" y1="12" x2="9" y2="12"/>
+                </svg>
+                <span id="logout-text">تسجيل الخروج</span>
+            </button>
+        </div>
+    </aside>
+
+    <main class="main">
+        <div class="sec on" style="display:block;">
+            <div class="ph">
+                <h2 id="settings-title">إعدادات الحساب</h2>
+                <p id="settings-subtitle">قم بتعديل معلوماتك الشخصية الحقيقية المحفوظة في قاعدة البيانات.</p>
+            </div>
+
+            <div class="set-c">
+                <h3 id="profile-section-title">المعلومات الشخصية</h3>
+
+                <div class="fg2">
+                    <div class="fg">
+                        <label for="set-lastname" id="label-lastname">الاسم</label>
+                        <input id="set-lastname" type="text" />
+                    </div>
+                    <div class="fg">
+                        <label for="set-firstname" id="label-firstname">اللقب</label>
+                        <input id="set-firstname" type="text" />
+                    </div>
+                </div>
+
+                <div class="fg2">
+                    <div class="fg">
+                        <label for="set-birthdate" id="label-birthdate">تاريخ الميلاد</label>
+                        <input id="set-birthdate" type="date" />
+                    </div>
+                    <div class="fg">
+                        <label for="set-email" id="label-email">البريد الإلكتروني</label>
+                        <input id="set-email" type="email" disabled />
+                    </div>
+                </div>
+
+                <div class="fg2">
+                    <div class="fg">
+                        <label for="set-wilaya" id="label-wilaya">الولاية</label>
+                        <select id="set-wilaya">
+                            <option value="">—</option>
+                            <option value="Adrar">Adrar</option>
+                            <option value="Chlef">Chlef</option>
+                            <option value="Laghouat">Laghouat</option>
+                            <option value="Oum El Bouaghi">Oum El Bouaghi</option>
+                            <option value="Batna">Batna</option>
+                            <option value="Béjaïa">Béjaïa</option>
+                            <option value="Biskra">Biskra</option>
+                            <option value="Béchar">Béchar</option>
+                            <option value="Blida">Blida</option>
+                            <option value="Bouira">Bouira</option>
+                            <option value="Tamanrasset">Tamanrasset</option>
+                            <option value="Tébessa">Tébessa</option>
+                            <option value="Tlemcen">Tlemcen</option>
+                            <option value="Tiaret">Tiaret</option>
+                            <option value="Tizi Ouzou">Tizi Ouzou</option>
+                            <option value="Alger">Alger</option>
+                            <option value="Djelfa">Djelfa</option>
+                            <option value="Jijel">Jijel</option>
+                            <option value="Sétif">Sétif</option>
+                            <option value="Saïda">Saïda</option>
+                            <option value="Skikda">Skikda</option>
+                            <option value="Sidi Bel Abbès">Sidi Bel Abbès</option>
+                            <option value="Annaba">Annaba</option>
+                            <option value="Guelma">Guelma</option>
+                            <option value="Constantine">Constantine</option>
+                            <option value="Médéa">Médéa</option>
+                            <option value="Mostaganem">Mostaganem</option>
+                            <option value="M'Sila">M'Sila</option>
+                            <option value="Mascara">Mascara</option>
+                            <option value="Ouargla">Ouargla</option>
+                            <option value="Oran">Oran</option>
+                            <option value="El Bayadh">El Bayadh</option>
+                            <option value="Illizi">Illizi</option>
+                            <option value="Bordj Bou Arreridj">Bordj Bou Arreridj</option>
+                            <option value="Boumerdès">Boumerdès</option>
+                            <option value="El Tarf">El Tarf</option>
+                            <option value="Tindouf">Tindouf</option>
+                            <option value="Tissemsilt">Tissemsilt</option>
+                            <option value="El Oued">El Oued</option>
+                            <option value="Khenchela">Khenchela</option>
+                            <option value="Souk Ahras">Souk Ahras</option>
+                            <option value="Tipaza">Tipaza</option>
+                            <option value="Mila">Mila</option>
+                            <option value="Aïn Defla">Aïn Defla</option>
+                            <option value="Naâma">Naâma</option>
+                            <option value="Aïn Témouchent">Aïn Témouchent</option>
+                            <option value="Ghardaïa">Ghardaïa</option>
+                            <option value="Relizane">Relizane</option>
+                        </select>
+                    </div>
+
+                    <div class="fg">
+                        <label for="set-phone" id="label-phone">الهاتف</label>
+                        <input id="set-phone" type="tel" />
+                    </div>
+                </div>
+
+                <div class="fg">
+                    <label for="set-hospital" id="label-hospital">المستشفى</label>
+                    <input id="set-hospital" type="text" />
+                </div>
+
+                <div id="settings-message" class="asw" style="display:none;margin-bottom:10px;"></div>
+
+                <button class="save-btn save-btn-primary" id="save-profile-btn" onclick="saveProfile()">
+                    <span class="save-btn-text">حفظ التعديلات</span>
+                    <span class="save-btn-loader" aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script type="module">
+    import { auth, db } from "/static/js/firebase-config.js";
+    import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    import { ref, get, update } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+    const settingsTranslations = {
+        ar: {
+            dir: "rtl",
+            lang: "ar",
+            sidebarSubtitle: "إعدادات الحساب",
+            navDashboard: "الرئيسية",
+            navExercises: "التمارين",
+            navProgress: "التقدم",
+            navAvc: "الوقاية من السكتة الدماغية",
+            navMotor: "الحركي والتقييم",
+            navSettings: "الإعدادات",
+            logout: "تسجيل الخروج",
+            title: "إعدادات الحساب",
+            subtitle: "قم بتعديل معلوماتك الشخصية الحقيقية المحفوظة في قاعدة البيانات.",
+            profileSectionTitle: "المعلومات الشخصية",
+            lastName: "الاسم",
+            firstName: "اللقب",
+            birthDate: "تاريخ الميلاد",
+            email: "البريد الإلكتروني",
+            wilaya: "الولاية",
+            phone: "الهاتف",
+            hospital: "المستشفى",
+            save: "حفظ التعديلات",
+            loading: "جاري الحفظ...",
+            success: "تم حفظ التعديلات بنجاح.",
+            required: "يرجى ملء جميع الحقول المطلوبة."
+        },
+        fr: {
+            dir: "ltr",
+            lang: "fr",
+            sidebarSubtitle: "Paramètres du compte",
+            navDashboard: "Accueil",
+            navExercises: "Exercices",
+            navProgress: "Progrès",
+            navAvc: "Prévention AVC",
+            navMotor: "Moteur et Bilan",
+            navSettings: "Paramètres",
+            logout: "Se déconnecter",
+            title: "Paramètres du compte",
+            subtitle: "Modifiez ici vos vraies informations personnelles enregistrées dans la base de données.",
+            profileSectionTitle: "Informations personnelles",
+            lastName: "Nom",
+            firstName: "Prénom",
+            birthDate: "Date de naissance",
+            email: "Email",
+            wilaya: "Wilaya",
+            phone: "Téléphone",
+            hospital: "Hôpital",
+            save: "Enregistrer les modifications",
+            loading: "Enregistrement...",
+            success: "Modifications enregistrées avec succès.",
+            required: "Veuillez remplir tous les champs requis."
+        },
+        en: {
+            dir: "ltr",
+            lang: "en",
+            sidebarSubtitle: "Account settings",
+            navDashboard: "Home",
+            navExercises: "Exercises",
+            navProgress: "Progress",
+            navAvc: "Stroke Prevention",
+            navMotor: "Motor and Assessment",
+            navSettings: "Settings",
+            logout: "Log out",
+            title: "Account settings",
+            subtitle: "Edit your real personal information saved in the database.",
+            profileSectionTitle: "Personal information",
+            lastName: "Last name",
+            firstName: "First name",
+            birthDate: "Birth date",
+            email: "Email",
+            wilaya: "Wilaya",
+            phone: "Phone",
+            hospital: "Hospital",
+            save: "Save changes",
+            loading: "Saving...",
+            success: "Changes saved successfully.",
+            required: "Please fill in all required fields."
+        }
+    };
+
+    let currentUser = null;
+    window.currentSettingsLang = "ar";
+
+    function showMessage(message, isError = true) {
+        const box = document.getElementById("settings-message");
+        box.style.display = "block";
+        box.style.color = isError ? "var(--ER)" : "var(--OK)";
+        box.textContent = message;
+    }
+
+    function clearMessage() {
+        const box = document.getElementById("settings-message");
+        box.style.display = "none";
+        box.textContent = "";
+    }
+
+    window.setSettingsLang = function(lang) {
+        localStorage.setItem("nrw_lang", lang);
+        const t = settingsTranslations[lang];
+        window.currentSettingsLang = lang;
+
+        document.documentElement.lang = t.lang;
+        document.documentElement.dir = t.dir;
+
+        document.getElementById("sidebar-subtitle").textContent = t.sidebarSubtitle;
+        document.getElementById("nav-dashboard").textContent = t.navDashboard;
+        document.getElementById("nav-exercises").textContent = t.navExercises;
+        document.getElementById("nav-progress").textContent = t.navProgress;
+        document.getElementById("nav-avc").textContent = t.navAvc;
+        document.getElementById("nav-motor").textContent = t.navMotor;
+        document.getElementById("nav-settings").textContent = t.navSettings;
+        document.getElementById("logout-text").textContent = t.logout;
+        document.getElementById("settings-title").textContent = t.title;
+        document.getElementById("settings-subtitle").textContent = t.subtitle;
+        document.getElementById("profile-section-title").textContent = t.profileSectionTitle;
+        document.getElementById("label-lastname").textContent = t.lastName;
+        document.getElementById("label-firstname").textContent = t.firstName;
+        document.getElementById("label-birthdate").textContent = t.birthDate;
+        document.getElementById("label-email").textContent = t.email;
+        document.getElementById("label-wilaya").textContent = t.wilaya;
+        document.getElementById("label-phone").textContent = t.phone;
+        document.getElementById("label-hospital").textContent = t.hospital;
+
+        const saveBtnText = document.querySelector("#save-profile-btn .save-btn-text");
+        if (saveBtnText) saveBtnText.textContent = t.save;
+
+        document.querySelectorAll(".slp").forEach(btn => {
+            btn.classList.remove("on");
+            if (btn.textContent.trim().toLowerCase() === lang) {
+                btn.classList.add("on");
+            }
+        });
+    };
+
+    async function loadProfile(user) {
+        const emailInput = document.getElementById("set-email");
+        emailInput.value = user.email || "";
+
+        try {
+            const snapshot = await get(ref(db, `users/${user.uid}`));
+
+            if (snapshot.exists()) {
+                const data = snapshot.val();
+
+                document.getElementById("set-lastname").value = data.lastName || "";
+                document.getElementById("set-firstname").value = data.firstName || "";
+                document.getElementById("set-birthdate").value = data.birthDate || "";
+                document.getElementById("set-wilaya").value = data.wilaya || "";
+                document.getElementById("set-phone").value = data.phone || "";
+                document.getElementById("set-hospital").value = data.hospital || "";
+            }
+        } catch (error) {
+            console.error("Load profile error:", error);
+        }
+    }
+
+    window.saveProfile = async function saveProfile() {
+        clearMessage();
+
+        const t = settingsTranslations[window.currentSettingsLang];
+        const saveBtn = document.getElementById("save-profile-btn");
+
+        const lastName = document.getElementById("set-lastname").value.trim();
+        const firstName = document.getElementById("set-firstname").value.trim();
+        const birthDate = document.getElementById("set-birthdate").value.trim();
+        const wilaya = document.getElementById("set-wilaya").value.trim();
+        const phone = document.getElementById("set-phone").value.trim();
+        const hospital = document.getElementById("set-hospital").value.trim();
+
+        if (!currentUser) return;
+
+        if (!lastName || !firstName || !birthDate || !wilaya || !phone || !hospital) {
+            showMessage(t.required, true);
+            return;
+        }
+
+        try {
+            saveBtn.disabled = true;
+            const saveBtnText = saveBtn.querySelector(".save-btn-text");
+            if (saveBtnText) saveBtnText.textContent = t.loading;
+
+            await update(ref(db, `users/${currentUser.uid}`), {
+                lastName,
+                firstName,
+                birthDate,
+                wilaya,
+                phone,
+                hospital,
+                updatedAt: new Date().toISOString()
+            });
+
+            showMessage(t.success, false);
+        } catch (error) {
+            console.error("Save profile error:", error);
+            showMessage(error.message || "Error", true);
+        } finally {
+            saveBtn.disabled = false;
+            const saveBtnText = saveBtn.querySelector(".save-btn-text");
+            if (saveBtnText) saveBtnText.textContent = t.save;
+        }
+    };
+
+    onAuthStateChanged(auth, async (user) => {
+        if (user) {
+            currentUser = user;
+            await loadProfile(user);
+        } else {
+            window.location.href = "/";
+        }
+    });
+
+    window.logout = function() {
+        signOut(auth).then(() => {
+            window.location.href = "/";
+        });
+    };
+
+    const savedLang = localStorage.getItem("nrw_lang") || "ar";
+    setSettingsLang(savedLang);
+</script>
+
+</body>
+</html>

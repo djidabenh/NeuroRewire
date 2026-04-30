@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Neuro ReWire - Trajectory Connect Dots</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+</head>
+<body>
+<div id="page-app">
+  <aside class="sb">
+    <div class="sb-hd">
+      <div class="sb-sq">
+        <svg viewBox="0 0 24 24">
+          <path d="M9.5 2a2.5 2.5 0 0 1 4.9.44C16.1 3 17.5 4.4 17.5 6c0 .34-.04.67-.11 1H18a3 3 0 0 1 3 3c0 1.1-.6 2.1-1.5 2.6A3 3 0 0 1 18 18h-.5a2.5 2.5 0 0 1-4.9.44A2.5 2.5 0 0 1 9.5 16H9a3 3 0 0 1-1.5-5.6A3 3 0 0 1 9 4h.11A2.5 2.5 0 0 1 9.5 2z"/>
+        </svg>
+      </div>
+      <div class="sb-nm">
+        Neuro ReWire
+        <span id="sidebar-subtitle">Rééducation</span>
+      </div>
+    </div>
+
+    <nav class="sb-nav">
+      <div class="ni" onclick="window.location.href='/dashboard'"><span id="nav-dashboard">Dashboard</span></div>
+      <div class="ni on" onclick="window.location.href='/exercises'"><span id="nav-games">Exercises</span></div>
+      <div class="ni" onclick="window.location.href='/progress'"><span id="nav-progress">Progress</span></div>
+      <div class="ni" onclick="window.location.href='/settings'"><span id="nav-settings">Settings</span></div>
+    </nav>
+
+    <div class="sb-bt">
+      <div class="sb-ll">
+        <button class="slp" id="lang-fr" onclick="setGameLang('fr')">FR</button>
+        <button class="slp on" id="lang-ar" onclick="setGameLang('ar')">AR</button>
+        <button class="slp" id="lang-en" onclick="setGameLang('en')">EN</button>
+      </div>
+      <button class="logbtn" onclick="logout()"><span id="logout-text">Logout</span></button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="sec on">
+      <div class="back-btn" onclick="leaveGame()"><span id="back-text">Back</span></div>
+
+      <div class="game-hero trajectory-hero">
+        <div class="game-hero-copy">
+          <h2 id="game-title">Relier les points</h2>
+          <p id="game-subtitle">Reliez les points numérotés dans l'ordre.</p>
+        </div>
+        <div class="game-hero-badge">
+          <div class="ib lg">
+            <svg viewBox="0 0 24 24">
+              <circle cx="6" cy="17" r="2"/>
+              <circle cx="12" cy="7" r="2"/>
+              <circle cx="18" cy="16" r="2"/>
+              <path d="M8 16l3-7 5 6"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="game-shell game-shell-memory">
+        <div class="game-topbar">
+          <div class="game-pill" id="game-round-label">Niveau 1 / 6</div>
+          <div class="game-pill game-pill-score" id="game-score-label">Score : 0</div>
+        </div>
+        <div id="trajectory-connect-root"></div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script type="module" src="{{ url_for('static', filename='js/game-trajectory-connect-dots.js') }}"></script>
+</body>
+</html>

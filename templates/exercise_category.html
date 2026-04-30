@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Neuro ReWire - Exercise Category</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+</head>
+<body>
+
+<div id="page-app">
+  <aside class="sb">
+    <div class="sb-hd">
+      <div class="sb-sq">
+        <svg viewBox="0 0 24 24">
+          <path d="M9.5 2a2.5 2.5 0 0 1 4.9.44C16.1 3 17.5 4.4 17.5 6c0 .34-.04.67-.11 1H18a3 3 0 0 1 3 3c0 1.1-.6 2.1-1.5 2.6A3 3 0 0 1 18 18h-.5a2.5 2.5 0 0 1-4.9.44A2.5 2.5 0 0 1 9.5 16H9a3 3 0 0 1-1.5-5.6A3 3 0 0 1 9 4h.11A2.5 2.5 0 0 1 9.5 2z"/>
+        </svg>
+      </div>
+      <div class="sb-nm">
+        Neuro ReWire
+        <span id="sidebar-tagline">Rehabilitation</span>
+      </div>
+    </div>
+
+    <nav class="sb-nav">
+      <div class="ni" onclick="window.location.href='/dashboard'">
+        <svg viewBox="0 0 24 24">
+          <rect x="3" y="3" width="7" height="7" rx="1"/>
+          <rect x="14" y="3" width="7" height="7" rx="1"/>
+          <rect x="3" y="14" width="7" height="7" rx="1"/>
+          <rect x="14" y="14" width="7" height="7" rx="1"/>
+        </svg>
+        <span id="nav-dashboard">Dashboard</span>
+      </div>
+
+      <div class="ni on">
+        <svg viewBox="0 0 24 24">
+          <rect x="2" y="6" width="20" height="12" rx="2"/>
+          <path d="M6 12h4M8 10v4"/>
+          <circle cx="15" cy="11" r="1" fill="currentColor"/>
+          <circle cx="18" cy="13" r="1" fill="currentColor"/>
+        </svg>
+        <span id="nav-games">Exercises</span>
+      </div>
+
+      <div class="ni" onclick="window.location.href='/progress'">
+        <svg viewBox="0 0 24 24">
+          <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+        </svg>
+        <span id="nav-progress">Progress</span>
+      </div>
+
+      <div class="ni" onclick="window.location.href='/avc'">
+        <svg viewBox="0 0 24 24">
+          <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+        </svg>
+        <span id="nav-avc">Stroke Prevention</span>
+      </div>
+      <div class="ni">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/>
+        </svg>
+        <span id="nav-motor">Motor and Assessment</span>
+      </div>
+      <div class="ni" onclick="window.location.href='/settings'">
+        <svg viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+        </svg>
+        <span id="nav-settings">Settings</span>
+      </div>
+    </nav>
+
+    <div class="sb-bt">
+      <div class="sb-ll">
+        <button class="slp" id="lang-fr" onclick="setLang('fr')">FR</button>
+        <button class="slp on" id="lang-ar" onclick="setLang('ar')">AR</button>
+        <button class="slp" id="lang-en" onclick="setLang('en')">EN</button>
+      </div>
+      <button class="logbtn" onclick="window.location.href='/'">
+        <svg viewBox="0 0 24 24">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+          <polyline points="16 17 21 12 16 7"/>
+          <line x1="21" y1="12" x2="9" y2="12"/>
+        </svg>
+        <span id="logout-text">Sign Out</span>
+      </button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="sec on" id="sec-sg">
+      <div class="back-btn" onclick="window.location.href='/exercises'">
+        <svg viewBox="0 0 24 24">
+          <polyline points="9 18 15 12 9 6"/>
+        </svg>
+        <span id="back-text">Back</span>
+      </div>
+
+      <div class="sg-hdr">
+        <div class="sg-hdr-t">
+          <h2 id="sg-h"></h2>
+          <p id="sg-p"></p>
+        </div>
+        <div class="ib lg" id="sg-ib"></div>
+      </div>
+
+      <div class="sg-grid" id="sg-grid"></div>
+    </div>
+  </main>
+</div>
+
+<script>
+  const SVG_ICONS = {
+    brain: `<svg viewBox="0 0 24 24"><path d="M9.5 2a2.5 2.5 0 0 1 4.9.44C16.1 3 17.5 4.4 17.5 6c0 .34-.04.67-.11 1H18a3 3 0 0 1 3 3c0 1.1-.6 2.1-1.5 2.6A3 3 0 0 1 18 18h-.5a2.5 2.5 0 0 1-4.9.44A2.5 2.5 0 0 1 9.5 16H9a3 3 0 0 1-1.5-5.6A3 3 0 0 1 9 4h.11A2.5 2.5 0 0 1 9.5 2z"/></svg>`,
+    eye: `<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/></svg>`,
+    hand: `<svg viewBox="0 0 24 24"><path d="M18 11V6a2 2 0 0 0-4 0M14 10V4a2 2 0 0 0-4 0v2M10 10.5V6a2 2 0 0 0-4 0v8M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg>`,
+    robot: `<svg viewBox="0 0 24 24"><rect x="7" y="8" width="10" height="8" rx="2"/><path d="M12 8V5"/><circle cx="10" cy="12" r="1"/><circle cx="14" cy="12" r="1"/><path d="M9 16v3"/><path d="M15 16v3"/><path d="M7 10H5"/><path d="M19 10h-2"/></svg>`,
+    pen: `<svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>`,
+    chat: `<svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>`,
+    quiz: `<svg viewBox="0 0 24 24"><circle cx="12" cy="18" r="1"/><path d="M9.09 9a3 3 0 1 1 5.82 1c0 2-3 3-3 3"/></svg>`
+  };
+
+  const T = {
+    ar: {
+      tagline_s: "إعادة التأهيل",
+      nav_dash: "الرئيسية",
+      nav_games: "التمارين",
+      nav_prog: "التقدم",
+      nav_avc: "الوقاية من السكتة الدماغية",
+      nav_motor: "الحركي والتقييم",
+      nav_set: "الإعدادات",
+      logout: "تسجيل الخروج",
+      back: "رجوع",
+      sg_p: "اختر لعبة",
+
+      c1: "الذاكرة",
+      c1d: "حفظ الصور والترتيب والأزواج",
+      c2: "الانتباه",
+      c2d: "التركيز والتمييز البصري",
+      c3: "التنسيق",
+      c3d: "الالتقاط والسحب والتسلسلات",
+      c4: "الروبوت",
+      c4d: "الروبوت يقوم بحركة، قلدها",
+      c5: "المسار",
+      c5d: "ارسم الخطوط والأشكال والمسارات",
+      c6: "اللغة",
+      c6d: "كلمات الدارجة والصور والربط",
+      c7: "الاختبار والسرعة",
+      c7d: "أسئلة ذهنية وحساب سريع",
+
+      m1: "حفظ الصور",
+      m1d: "انظر ثم اعثر على الصور التي شاهدتها",
+      m2: "إعادة الترتيب",
+      m2d: "أعد الصور إلى الترتيب الصحيح",
+      m3: "العثور على الأزواج",
+      m3d: "اعثر على أزواج الصور المتطابقة",
+
+      a1: "العثور على المختلف",
+      a1d: "اعثر على الصورة المختلفة بين البقية",
+      a2: "النقر على الهدف",
+      a2d: "انقر فقط على العنصر المطلوب",
+      a3: "البحث في المشهد",
+      a3d: "اعثر على العناصر المطلوبة داخل المشهد",
+
+      co1: "التقاط الفواكه",
+      co1d: "التقط الفواكه الساقطة بالسلة",
+      co2: "السحب والإفلات",
+      co2d: "ضع كل عنصر في مكانه الصحيح",
+      co3: "لمس الهدف",
+      co3d: "المس الأهداف المضيئة بالترتيب الصحيح",
+
+      r1: "تقليد الروبوت",
+      r1d: "شاهد حركة الروبوت ثم اختر الوضعية المطابقة",
+
+      t1: "ربط النقاط",
+      t1d: "اربط النقاط المرقمة بالترتيب: 1 ← 2 ← 3 ← 4",
+      t2: "رسم دائرة",
+      t2d: "ارسم دائرة كاملة حول الهدف المركزي",
+      t3: "المتاهة",
+      t3d: "وجّه النقطة من البداية إلى النهاية داخل المسار",
+
+      l1: "الكلمة والصورة",
+      l1d: "اختر الكلمة الدارجة الصحيحة للصورة",
+      l2: "إكمال الكلمة",
+      l2d: "أكمل الكلمة الدارجة الناقصة",
+      l3: "التصنيف",
+      l3d: "ضع كل كلمة في الفئة المناسبة",
+
+      q1: "أسئلة عامة",
+      q1d: "أسئلة حول الحياة اليومية",
+      q2: "مقارنة سريعة",
+      q2d: "أيهما أكبر؟ أجب بسرعة!",
+      q3: "حساب سريع",
+      q3d: "عمليات بسيطة ضد الوقت"
+    },
+
+    fr: {
+      tagline_s: "Réhabilitation",
+      nav_dash: "Tableau de bord",
+      nav_games: "Exercices",
+      nav_prog: "Progression",
+      nav_avc: "Prévention AVC",
+      nav_motor: "Moteur et bilan",
+      nav_set: "Paramètres",
+      logout: "Se déconnecter",
+      back: "Retour",
+      sg_p: "Choisissez un jeu",
+
+      c1: "Mémoire",
+      c1d: "Mémorisation, ordre et paires d'images",
+      c2: "Attention",
+      c2d: "Concentration et discrimination visuelle",
+      c3: "Coordination",
+      c3d: "Attraper, glisser et séquences",
+      c4: "Robot",
+      c4d: "Le robot fait un geste, imitez-le",
+      c5: "Trajectoire",
+      c5d: "Tracer lignes, formes et chemins",
+      c6: "Langage",
+      c6d: "Mots darija, images et associations",
+      c7: "Quiz & Rapidité",
+      c7d: "Questions cognitives et calcul mental",
+
+      m1: "Mémoriser les images",
+      m1d: "Regardez puis retrouvez les images vues",
+      m2: "Remettre en ordre",
+      m2d: "Remettez les images dans le bon ordre",
+      m3: "Trouver les paires",
+      m3d: "Retrouvez les paires d'images identiques",
+
+      a1: "Trouver l'intrus",
+      a1d: "Trouvez l'image différente parmi les autres",
+      a2: "Cliquer la cible",
+      a2d: "Cliquez uniquement sur le fruit demandé",
+      a3: "Chercher dans la scène",
+      a3d: "Trouvez les objets indiqués dans la scène",
+
+      co1: "Attraper les fruits",
+      co1d: "Attrapez les fruits qui tombent avec le panier",
+      co2: "Glisser-déposer",
+      co2d: "Déposez chaque objet au bon endroit",
+      co3: "Toucher la cible",
+      co3d: "Touchez les cibles qui s'allument dans le bon ordre",
+
+      r1: "Imiter le robot",
+      r1d: "Regardez le geste du robot puis choisissez la même posture",
+
+      t1: "Relier les points",
+      t1d: "Reliez les points numérotés dans l'ordre : 1 → 2 → 3 → 4",
+      t2: "Tracer un cercle",
+      t2d: "Tracez un cercle complet autour de la cible centrale",
+      t3: "Le labyrinthe",
+      t3d: "Guidez le point du début jusqu'à la fin dans le couloir",
+
+      l1: "Mot et image",
+      l1d: "Choisissez le bon mot darija pour l'image",
+      l2: "Compléter le mot",
+      l2d: "Complétez le mot darija manquant",
+      l3: "Catégoriser",
+      l3d: "Placez chaque mot dans la bonne catégorie",
+
+      q1: "Questions générales",
+      q1d: "Questions sur la vie quotidienne",
+      q2: "Comparaison rapide",
+      q2d: "Lequel est plus grand ? Répondez vite !",
+      q3: "Calcul rapide",
+      q3d: "Opérations simples contre la montre"
+    },
+
+    en: {
+      tagline_s: "Rehabilitation",
+      nav_dash: "Home",
+      nav_games: "Exercises",
+      nav_prog: "Progress",
+      nav_avc: "Stroke Prevention",
+      nav_motor: "Motor and assessment",
+      nav_set: "Settings",
+      logout: "Sign Out",
+      back: "Back",
+      sg_p: "Choose a game",
+
+      c1: "Memory",
+      c1d: "Image memorization, order and pairs",
+      c2: "Attention",
+      c2d: "Concentration and visual discrimination",
+      c3: "Coordination",
+      c3d: "Catching, drag-drop and sequences",
+      c4: "Robot",
+      c4d: "The robot makes a gesture, imitate it",
+      c5: "Trajectory",
+      c5d: "Draw lines, shapes and paths",
+      c6: "Language",
+      c6d: "Darija words, images and associations",
+      c7: "Quiz & Speed",
+      c7d: "Cognitive questions and mental math",
+
+      m1: "Memorize images",
+      m1d: "Look then find the images you saw",
+      m2: "Put in order",
+      m2d: "Put the images back in correct order",
+      m3: "Find the pairs",
+      m3d: "Find the matching pairs of images",
+
+      a1: "Find the odd one",
+      a1d: "Find the different image among the others",
+      a2: "Click the target",
+      a2d: "Click only on the requested fruit",
+      a3: "Search the scene",
+      a3d: "Find the indicated objects in the scene",
+
+      co1: "Catch the fruits",
+      co1d: "Catch the falling fruits with the basket",
+      co2: "Drag and drop",
+      co2d: "Drop each object in the right place",
+      co3: "Tap the target",
+      co3d: "Tap the glowing targets in the correct order",
+
+      r1: "Imitate the robot",
+      r1d: "Watch the robot's gesture then choose the matching posture",
+
+      t1: "Connect the dots",
+      t1d: "Connect the numbered dots in order: 1 → 2 → 3 → 4",
+      t2: "Draw a circle",
+      t2d: "Draw a full circle around the central target",
+      t3: "The maze",
+      t3d: "Guide the point from start to finish inside the corridor",
+
+      l1: "Word and image",
+      l1d: "Choose the correct Darija word for the image",
+      l2: "Complete the word",
+      l2d: "Complete the missing Darija word",
+      l3: "Categorize words",
+      l3d: "Place each word in the right category",
+
+      q1: "General questions",
+      q1d: "Questions about daily life",
+      q2: "Quick comparison",
+      q2d: "Which is bigger? Answer fast!",
+      q3: "Quick math",
+      q3d: "Simple operations against the clock"
+    }
+  };
+
+  const CATS = [
+    {
+      ids: ["memory"],
+      ik: "brain",
+      nk: "c1",
+      subs: [
+        { nk: "m1", dk: "m1d", gid: "mem_memorize" },
+        { nk: "m2", dk: "m2d", gid: "mem_order" },
+        { nk: "m3", dk: "m3d", gid: "mem_pairs" }
+      ]
+    },
+    {
+      ids: ["attention"],
+      ik: "eye",
+      nk: "c2",
+      subs: [
+        { nk: "a1", dk: "a1d", gid: "att_odd" },
+        { nk: "a2", dk: "a2d", gid: "att_click" },
+        { nk: "a3", dk: "a3d", gid: "att_scene" }
+      ]
+    },
+    {
+      ids: ["coord", "coordination"],
+      ik: "hand",
+      nk: "c3",
+      subs: [
+        { nk: "co1", dk: "co1d", gid: "co_catch" },
+        { nk: "co2", dk: "co2d", gid: "co_dnd" },
+        { nk: "co3", dk: "co3d", gid: "co_tap" }
+      ]
+    },
+    {
+      ids: ["robot"],
+      ik: "robot",
+      nk: "c4",
+      subs: [
+        { nk: "r1", dk: "r1d", gid: "rob_follow" }
+      ]
+    },
+    {
+      ids: ["traj", "trajectory"],
+      ik: "pen",
+      nk: "c5",
+      subs: [
+        { nk: "t1", dk: "t1d", gid: "traj_line" },
+        { nk: "t2", dk: "t2d", gid: "traj_shape" },
+        { nk: "t3", dk: "t3d", gid: "traj_path" }
+      ]
+    },
+    {
+      ids: ["lang", "language"],
+      ik: "chat",
+      nk: "c6",
+      subs: [
+        { nk: "l1", dk: "l1d", gid: "lang_word" },
+        { nk: "l2", dk: "l2d", gid: "lang_complete" },
+        { nk: "l3", dk: "l3d", gid: "lang_cat" }
+      ]
+    },
+    {
+      ids: ["quiz"],
+      ik: "quiz",
+      nk: "c7",
+      subs: [
+        { nk: "q1", dk: "q1d", gid: "quiz_gen" },
+        { nk: "q2", dk: "q2d", gid: "rapid_cmp" },
+        { nk: "q3", dk: "q3d", gid: "rapid_math" }
+      ]
+    }
+  ];
+
+  let lang = localStorage.getItem("nrw_lang") || "ar";
+
+  function t(key) {
+    return (T[lang] && T[lang][key]) || key;
+  }
+
+  function getCurrentCategory() {
+    const slug = window.location.pathname.split("/").filter(Boolean).pop();
+    return CATS.find(cat => cat.ids.includes(slug));
+  }
+
+  function updateLangButtons() {
+    document.querySelectorAll(".slp").forEach(btn => btn.classList.remove("on"));
+    const active = document.getElementById(`lang-${lang}`);
+    if (active) active.classList.add("on");
+  }
+
+  function renderCategory() {
+    const currentCat = getCurrentCategory();
+    if (!currentCat) {
+      document.getElementById("sg-h").textContent = "Category not found";
+      document.getElementById("sg-p").textContent = "";
+      document.getElementById("sg-grid").innerHTML = "";
+      return;
+    }
+
+    document.getElementById("sidebar-tagline").textContent = t("tagline_s");
+    document.getElementById("nav-dashboard").textContent = t("nav_dash");
+    document.getElementById("nav-games").textContent = t("nav_games");
+    document.getElementById("nav-progress").textContent = t("nav_prog");
+    document.getElementById("nav-avc").textContent = t("nav_avc");
+    document.getElementById("nav-motor").textContent = t("nav_motor");
+    document.getElementById("nav-settings").textContent = t("nav_set");
+    document.getElementById("logout-text").textContent = t("logout");
+    document.getElementById("back-text").textContent = t("back");
+
+    document.getElementById("sg-h").textContent = t(currentCat.nk);
+    document.getElementById("sg-p").textContent = t("sg_p");
+    document.getElementById("sg-ib").innerHTML = SVG_ICONS[currentCat.ik];
+
+    document.getElementById("sg-grid").innerHTML = currentCat.subs.map((s, i) => `
+      <div class="sg-c" onclick="openGame('${s.gid}', '${s.nk}')">
+        <div class="sg-num">${i + 1}</div>
+        <div class="sg-t">${t(s.nk)}</div>
+        <div class="sg-d">${t(s.dk)}</div>
+      </div>
+    `).join("");
+  }
+
+  function setLang(nextLang) {
+    localStorage.setItem("nrw_lang", nextLang);
+    lang = nextLang;
+    document.documentElement.lang = nextLang;
+    document.documentElement.dir = nextLang === "ar" ? "rtl" : "ltr";
+    updateLangButtons();
+    renderCategory();
+  }
+
+  function openGame(gid, nk) {
+    const gameRoutes = {
+  mem_memorize: "/games/memory-images",
+  mem_order: "/games/memory-order",
+  mem_pairs: "/games/memory-pairs",
+
+  att_odd: "/games/attention-intruder",
+  att_click: "/games/attention-click-target",
+  att_scene: "/games/attention-scene-search",
+
+  co_catch: "/games/coordination-catch-fruits",
+  co_dnd: "/games/coordination-drag-drop",
+  co_tap: "/games/coordination-tap-target",
+
+  traj_line: "/games/trajectory-connect-dots",
+  traj_shape: "/games/trajectory-draw-shapes",
+  traj_path: "/games/trajectory-maze",
+
+  quiz_gen: "/games/quiz-general",
+  rapid_cmp: "/games/quiz-rapid-compare",
+  rapid_math: "/games/quiz-rapid-math",
+
+  lang_word: "/games/language-word-image",
+  lang_complete: "/games/language-complete-word",
+  lang_cat: "/games/language-categorize",
+
+  rob_follow: "/games/robot-follow"
+};
+
+    if (gameRoutes[gid]) {
+      window.location.href = gameRoutes[gid];
+      return;
+    }
+
+    window.location.href = `/games/${gid}`;
+  }
+
+  const savedLang = localStorage.getItem("nrw_lang") || "ar";
+  setLang(savedLang);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neuro ReWire - Progress</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+</head>
+<body>
+
+<div class="page active" id="page-app" style="display:flex;">
+    <aside class="sb">
+        <div class="sb-hd">
+            <div class="sb-sq">
+                <svg viewBox="0 0 24 24">
+                    <path d="M9.5 2a2.5 2.5 0 0 1 4.9.44C16.1 3 17.5 4.4 17.5 6c0 .34-.04-.67-.11 1H18a3 3 0 0 1 3 3c0 1.1-.6 2.1-1.5 2.6A3 3 0 0 1 18 18h-.5a2.5 2.5 0 0 1-4.9.44A2.5 2.5 0 0 1 9.5 16H9a3 3 0 0 1-1.5-5.6A3 3 0 0 1 9 4h.11A2.5 2.5 0 0 1 9.5 2z"/>
+                </svg>
+            </div>
+            <div class="sb-nm">
+                Neuro ReWire
+                <span id="sidebar-subtitle">متابعة التقدم</span>
+            </div>
+        </div>
+
+        <nav class="sb-nav">
+            <div class="ni" onclick="window.location.href='/dashboard'">
+                <svg viewBox="0 0 24 24">
+                    <rect x="3" y="3" width="7" height="7" rx="1"/>
+                    <rect x="14" y="3" width="7" height="7" rx="1"/>
+                    <rect x="3" y="14" width="7" height="7" rx="1"/>
+                    <rect x="14" y="14" width="7" height="7" rx="1"/>
+                </svg>
+                <span id="nav-dashboard">الرئيسية</span>
+            </div>
+
+            <div class="ni" onclick="window.location.href='/exercises'">
+                 <svg viewBox="0 0 24 24">
+                    <rect x="2" y="6" width="20" height="12" rx="2"/>
+                    <path d="M6 12h4M8 10v4"/>
+                    <circle cx="15" cy="11" r="1" fill="currentColor"/>
+                    <circle cx="18" cy="13" r="1" fill="currentColor"/>
+                 </svg>
+                      <span id="nav-exercises">التمارين</span>
+            </div>
+
+            <div class="ni on">
+                <svg viewBox="0 0 24 24">
+                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                </svg>
+                <span id="nav-progress">التقدم</span>
+            </div>
+
+             <div class="ni" onclick="window.location.href='/avc'">
+              <svg viewBox="0 0 24 24">
+                  <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+              </svg>
+                  <span id="nav-avc">الوقاية من السكتة الدماغية</span>
+            </div>
+
+            <div class="ni">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/>
+                </svg>
+                <span id="nav-motor">الحركي والتقييم</span>
+            </div>
+
+            <div class="ni" onclick="window.location.href='/settings'">
+                <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="3"/>
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                </svg>
+                <span id="nav-settings">الإعدادات</span>
+            </div>
+        </nav>
+
+        <div class="sb-bt">
+            <div class="sb-ll">
+                <button class="slp" type="button" onclick="setProgressLang('fr')">FR</button>
+                <button class="slp on" type="button" onclick="setProgressLang('ar')">AR</button>
+                <button class="slp" type="button" onclick="setProgressLang('en')">EN</button>
+            </div>
+
+            <button class="logbtn" onclick="logout()">
+                <svg viewBox="0 0 24 24">
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+                    <polyline points="16 17 21 12 16 7"/>
+                    <line x1="21" y1="12" x2="9" y2="12"/>
+                </svg>
+                <span id="logout-text">تسجيل الخروج</span>
+            </button>
+        </div>
+    </aside>
+
+    <main class="main">
+        <div class="sec on" style="display:block;">
+            <div class="ph">
+                <h2 id="progress-title">متابعة التقدم</h2>
+                <p id="progress-subtitle">هذه الصفحة تعرض فقط بيانات الجلسات والتمارين الحقيقية المحفوظة في قاعدة البيانات.</p>
+            </div>
+
+            <div class="stats-row">
+                <div class="stat-c">
+                    <div class="stat-inf">
+                        <div class="stat-v" id="completed-sessions">—</div>
+                        <div class="stat-l" id="completed-sessions-label">الجلسات المكتملة</div>
+                    </div>
+                    <div class="ib md">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="m9 12 2 2 4-4"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="stat-c">
+                    <div class="stat-inf">
+                        <div class="stat-v" id="completed-exercises">—</div>
+                        <div class="stat-l" id="completed-exercises-label">التمارين المكتملة</div>
+                    </div>
+                    <div class="ib md">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="2" y="6" width="20" height="12" rx="2"/>
+                            <path d="M6 12h4M8 10v4"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="stat-c">
+                    <div class="stat-inf">
+                        <div class="stat-v" id="total-time">—</div>
+                        <div class="stat-l" id="total-time-label">الوقت الإجمالي</div>
+                    </div>
+                    <div class="ib md">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="stat-c">
+                    <div class="stat-inf">
+                        <div class="stat-v" id="last-activity">—</div>
+                        <div class="stat-l" id="last-activity-label">آخر نشاط</div>
+                    </div>
+                    <div class="ib md">
+                        <svg viewBox="0 0 24 24">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ch-row" style="margin-bottom:16px;">
+                <div class="ch-c">
+                    <div class="ch-t" id="category-title">التقدم حسب الفئة</div>
+                    <div id="category-list" style="display:grid;gap:10px;"></div>
+                </div>
+
+                <div class="ch-c">
+                    <div class="ch-t" id="status-title">حالة التمارين</div>
+                    <div id="exercise-status-list" style="display:grid;gap:10px;">
+                        <div class="set-row">
+                            <div>
+                                <div style="font-size:.84rem;font-weight:600" id="started-exercises-label">تمارين قيد التنفيذ</div>
+                                <div style="font-size:.76rem;color:var(--TXS)" id="started-exercises">—</div>
+                            </div>
+                        </div>
+
+                        <div class="set-row">
+                            <div>
+                                <div style="font-size:.84rem;font-weight:600" id="failed-exercises-label">تمارين غير ناجحة</div>
+                                <div style="font-size:.76rem;color:var(--TXS)" id="failed-exercises">—</div>
+                            </div>
+                        </div>
+
+                        <div class="set-row">
+                            <div>
+                                <div style="font-size:.84rem;font-weight:600" id="abandoned-exercises-label">تمارين متروكة</div>
+                                <div style="font-size:.76rem;color:var(--TXS)" id="abandoned-exercises">—</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="set-c">
+                <h3 id="history-title">سجل الجلسات</h3>
+                <div id="history-empty" style="display:none;font-size:.82rem;color:var(--TXS);line-height:1.8;"></div>
+
+                <div style="overflow-x:auto;">
+                    <table class="htbl" id="history-table">
+                        <thead>
+                            <tr>
+                                <th id="th-date">التاريخ</th>
+                                <th id="th-status">الحالة</th>
+                                <th id="th-duration">المدة</th>
+                                <th id="th-exercises">التمارين</th>
+                                <th id="th-completed">المكتمل</th>
+                            </tr>
+                        </thead>
+                        <tbody id="history-body"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script type="module">
+    import { auth } from "/static/js/firebase-config.js";
+    import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    import { getUserProgressData } from "/static/js/progress-data.js";
+
+    const progressTranslations = {
+        ar: {
+            dir: "rtl",
+            lang: "ar",
+            sidebarSubtitle: "متابعة التقدم",
+            navDashboard: "الرئيسية",
+            navExercises: "التمارين",
+            navProgress: "التقدم",
+            navAvc: "الوقاية من السكتة الدماغية",
+            navMotor: "الحركي والتقييم",
+            navSettings: "الإعدادات",
+            logout: "تسجيل الخروج",
+            title: "متابعة التقدم",
+            subtitle: "هذه الصفحة تعرض فقط بيانات الجلسات والتمارين الحقيقية المحفوظة في قاعدة البيانات.",
+            completedSessionsLabel: "الجلسات المكتملة",
+            completedExercisesLabel: "التمارين المكتملة",
+            totalTimeLabel: "الوقت الإجمالي",
+            lastActivityLabel: "آخر نشاط",
+            categoryTitle: "التقدم حسب الفئة",
+            statusTitle: "حالة التمارين",
+            startedExercisesLabel: "تمارين قيد التنفيذ",
+            failedExercisesLabel: "تمارين غير ناجحة",
+            abandonedExercisesLabel: "تمارين متروكة",
+            historyTitle: "سجل الجلسات",
+            emptyHistory: "لا توجد جلسات حقيقية محفوظة بعد.",
+            noCategoryData: "لا توجد بيانات فئات متاحة بعد.",
+            thDate: "التاريخ",
+            thStatus: "الحالة",
+            thDuration: "المدة",
+            thExercises: "التمارين",
+            thCompleted: "المكتمل",
+            statusCompleted: "مكتملة",
+            statusStarted: "قيد التنفيذ",
+            statusCancelled: "ملغاة"
+        },
+        fr: {
+            dir: "ltr",
+            lang: "fr",
+            sidebarSubtitle: "Suivi de progression",
+            navDashboard: "Accueil",
+            navExercises: "Exercices",
+            navProgress: "Progrès",
+            navAvc: "Prévention AVC",
+            navMotor: "Moteur et Bilan",
+            navSettings: "Paramètres",
+            logout: "Se déconnecter",
+            title: "Suivi de progression",
+            subtitle: "Cette page affiche uniquement les vraies données de séances et d’exercices enregistrées dans la base.",
+            completedSessionsLabel: "Séances terminées",
+            completedExercisesLabel: "Exercices terminés",
+            totalTimeLabel: "Temps total",
+            lastActivityLabel: "Dernière activité",
+            categoryTitle: "Progression par catégorie",
+            statusTitle: "État des exercices",
+            startedExercisesLabel: "Exercices en cours",
+            failedExercisesLabel: "Exercices non réussis",
+            abandonedExercisesLabel: "Exercices abandonnés",
+            historyTitle: "Historique des séances",
+            emptyHistory: "Aucune vraie séance enregistrée pour le moment.",
+            noCategoryData: "Aucune donnée de catégorie disponible pour le moment.",
+            thDate: "Date",
+            thStatus: "Statut",
+            thDuration: "Durée",
+            thExercises: "Exercices",
+            thCompleted: "Terminés",
+            statusCompleted: "Terminée",
+            statusStarted: "En cours",
+            statusCancelled: "Annulée"
+        },
+        en: {
+            dir: "ltr",
+            lang: "en",
+            sidebarSubtitle: "Progress tracking",
+            navDashboard: "Home",
+            navExercises: "Exercises",
+            navProgress: "Progress",
+            navAvc: "Stroke Prevention",
+            navMotor: "Motor and Assessment",
+            navSettings: "Settings",
+            logout: "Log out",
+            title: "Progress tracking",
+            subtitle: "This page only shows real session and exercise data stored in the database.",
+            completedSessionsLabel: "Completed sessions",
+            completedExercisesLabel: "Completed exercises",
+            totalTimeLabel: "Total time",
+            lastActivityLabel: "Last activity",
+            categoryTitle: "Progress by category",
+            statusTitle: "Exercise status",
+            startedExercisesLabel: "Exercises in progress",
+            failedExercisesLabel: "Failed exercises",
+            abandonedExercisesLabel: "Abandoned exercises",
+            historyTitle: "Session history",
+            emptyHistory: "No real sessions recorded yet.",
+            noCategoryData: "No category data available yet.",
+            thDate: "Date",
+            thStatus: "Status",
+            thDuration: "Duration",
+            thExercises: "Exercises",
+            thCompleted: "Completed",
+            statusCompleted: "Completed",
+            statusStarted: "Started",
+            statusCancelled: "Cancelled"
+        }
+    };
+
+    let currentProgressLang = "ar";
+
+    function safeValue(value) {
+        if (value === undefined || value === null || value === "") return "—";
+        return value;
+    }
+
+    function formatDate(dateString) {
+        if (!dateString) return "—";
+        const date = new Date(dateString);
+        if (isNaN(date.getTime())) return "—";
+        return date.toLocaleString();
+    }
+
+    function formatDuration(totalSeconds) {
+        if (typeof totalSeconds !== "number" || totalSeconds <= 0) return "—";
+
+        const hours = Math.floor(totalSeconds / 3600);
+        const minutes = Math.floor((totalSeconds % 3600) / 60);
+        const seconds = totalSeconds % 60;
+
+        if (hours > 0) return `${hours}h ${minutes}m`;
+        if (minutes > 0) return `${minutes}m ${seconds}s`;
+        return `${seconds}s`;
+    }
+
+    function translateSessionStatus(status) {
+        const t = progressTranslations[currentProgressLang];
+        if (status === "completed") return t.statusCompleted;
+        if (status === "started") return t.statusStarted;
+        if (status === "cancelled") return t.statusCancelled;
+        return safeValue(status);
+    }
+
+    window.setProgressLang = function(lang) {
+        localStorage.setItem("nrw_lang", lang);
+        const t = progressTranslations[lang];
+        currentProgressLang = lang;
+
+        document.documentElement.lang = t.lang;
+        document.documentElement.dir = t.dir;
+
+        document.getElementById("sidebar-subtitle").textContent = t.sidebarSubtitle;
+        document.getElementById("nav-dashboard").textContent = t.navDashboard;
+        document.getElementById("nav-exercises").textContent = t.navExercises;
+        document.getElementById("nav-progress").textContent = t.navProgress;
+        document.getElementById("nav-avc").textContent = t.navAvc;
+        document.getElementById("nav-motor").textContent = t.navMotor;
+        document.getElementById("nav-settings").textContent = t.navSettings;
+        document.getElementById("logout-text").textContent = t.logout;
+        document.getElementById("progress-title").textContent = t.title;
+        document.getElementById("progress-subtitle").textContent = t.subtitle;
+        document.getElementById("completed-sessions-label").textContent = t.completedSessionsLabel;
+        document.getElementById("completed-exercises-label").textContent = t.completedExercisesLabel;
+        document.getElementById("total-time-label").textContent = t.totalTimeLabel;
+        document.getElementById("last-activity-label").textContent = t.lastActivityLabel;
+        document.getElementById("category-title").textContent = t.categoryTitle;
+        document.getElementById("status-title").textContent = t.statusTitle;
+        document.getElementById("started-exercises-label").textContent = t.startedExercisesLabel;
+        document.getElementById("failed-exercises-label").textContent = t.failedExercisesLabel;
+        document.getElementById("abandoned-exercises-label").textContent = t.abandonedExercisesLabel;
+        document.getElementById("history-title").textContent = t.historyTitle;
+        document.getElementById("th-date").textContent = t.thDate;
+        document.getElementById("th-status").textContent = t.thStatus;
+        document.getElementById("th-duration").textContent = t.thDuration;
+        document.getElementById("th-exercises").textContent = t.thExercises;
+        document.getElementById("th-completed").textContent = t.thCompleted;
+
+        document.querySelectorAll(".slp").forEach(btn => {
+            btn.classList.remove("on");
+            if (btn.textContent.trim().toLowerCase() === lang) {
+                btn.classList.add("on");
+            }
+        });
+    };
+
+    function renderCategoryAverages(categoryAverages) {
+        const container = document.getElementById("category-list");
+        const t = progressTranslations[currentProgressLang];
+        container.innerHTML = "";
+
+        const entries = Object.entries(categoryAverages || {});
+        if (entries.length === 0) {
+            const empty = document.createElement("div");
+            empty.className = "set-row";
+            empty.innerHTML = `
+                <div>
+                    <div style="font-size:.76rem;color:var(--TXS)">${t.noCategoryData}</div>
+                </div>
+            `;
+            container.appendChild(empty);
+            return;
+        }
+
+        entries.forEach(([category, values]) => {
+            const row = document.createElement("div");
+            row.className = "set-row";
+            row.innerHTML = `
+                <div>
+                    <div style="font-size:.84rem;font-weight:600">${category}</div>
+                    <div style="font-size:.76rem;color:var(--TXS)">
+                        ${safeValue(values.averagePercent)}%
+                        · ${safeValue(values.completedCount)}
+                    </div>
+                </div>
+            `;
+            container.appendChild(row);
+        });
+    }
+
+    function renderSessionHistory(history) {
+        const body = document.getElementById("history-body");
+        const emptyBox = document.getElementById("history-empty");
+        const table = document.getElementById("history-table");
+        const t = progressTranslations[currentProgressLang];
+
+        body.innerHTML = "";
+
+        if (!history || history.length === 0) {
+            table.style.display = "none";
+            emptyBox.style.display = "block";
+            emptyBox.textContent = t.emptyHistory;
+            return;
+        }
+
+        table.style.display = "table";
+        emptyBox.style.display = "none";
+
+        history.forEach((item) => {
+            const tr = document.createElement("tr");
+            tr.innerHTML = `
+                <td>${formatDate(item.startedAt)}</td>
+                <td>${translateSessionStatus(item.status)}</td>
+                <td>${formatDuration(item.durationSeconds)}</td>
+                <td>${safeValue(item.exerciseCount)}</td>
+                <td>${safeValue(item.completedExerciseCount)}</td>
+            `;
+            body.appendChild(tr);
+        });
+    }
+
+    async function loadProgress(uid) {
+        try {
+            const data = await getUserProgressData(uid);
+
+            document.getElementById("completed-sessions").textContent =
+                safeValue(data.summary.completedSessions);
+
+            document.getElementById("completed-exercises").textContent =
+                safeValue(data.summary.completedExercises);
+
+            const totalDuration =
+                (data.summary.totalSessionDurationSeconds || 0) +
+                (data.summary.totalExerciseDurationSeconds || 0);
+
+            document.getElementById("total-time").textContent =
+                formatDuration(totalDuration);
+
+            document.getElementById("last-activity").textContent =
+                formatDate(data.summary.lastActivityAt);
+
+            document.getElementById("started-exercises").textContent =
+                safeValue(data.summary.startedExercises);
+
+            document.getElementById("failed-exercises").textContent =
+                safeValue(data.summary.failedExercises);
+
+            document.getElementById("abandoned-exercises").textContent =
+                safeValue(data.summary.abandonedExercises);
+
+            renderCategoryAverages(data.categoryAverages);
+            renderSessionHistory(data.sessionHistory);
+        } catch (error) {
+            console.error("Progress load error:", error);
+        }
+    }
+
+    onAuthStateChanged(auth, async (user) => {
+        if (user) {
+            await loadProgress(user.uid);
+        } else {
+            window.location.href = "/";
+        }
+    });
+
+    window.logout = function() {
+        signOut(auth).then(() => {
+            window.location.href = "/";
+        });
+    };
+
+    const savedLang = localStorage.getItem("nrw_lang") || "ar";
+    setProgressLang(savedLang);
+</script>
+
+</body>
+</html>
