@@ -105,6 +105,18 @@ def game_trajectory_draw_shapes():
 def game_trajectory_maze():
     return render_template("game_trajectory_maze.html")
 
+@app.route("/games/language-word-image")
+def game_language_word_image():
+    return render_template("game_language_word_image.html")
+
+@app.route("/games/language-complete-word")
+def game_language_complete_word():
+    return render_template("game_language_complete_word.html")
+
+@app.route("/games/language-categorize")
+def game_language_categorize():
+    return render_template("game_language_categorize.html")
+
 if __name__ == "__main__":
     app.run(debug=True)
 
