@@ -1,0 +1,147 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+
+    "users": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": "auth != null && auth.uid === $uid",
+        ".validate": "newData.hasChildren(['uid', 'givenName', 'familyName', 'birthDate', 'email', 'wilaya', 'phone', 'hospital', 'createdAt']) && newData.child('uid').val() === auth.uid",
+
+        "uid": {
+          ".validate": "newData.isString() && newData.val() === auth.uid"
+        },
+        "givenName": {
+          ".validate": "newData.isString() && newData.val().length >= 1 && newData.val().length <= 80"
+        },
+        "familyName": {
+          ".validate": "newData.isString() && newData.val().length >= 1 && newData.val().length <= 80"
+        },
+        "birthDate": {
+          ".validate": "newData.isString() && newData.val().matches(/^\\d{4}-\\d{2}-\\d{2}$/)"
+        },
+        "email": {
+          ".validate": "newData.isString() && newData.val().length <= 160"
+        },
+        "wilaya": {
+          ".validate": "newData.isString() && newData.val().length >= 1 && newData.val().length <= 80"
+        },
+        "phone": {
+          ".validate": "newData.isString() && newData.val().matches(/^\\+?[0-9]{6,15}$/)"
+        },
+        "hospital": {
+          ".validate": "newData.isString() && newData.val().length >= 1 && newData.val().length <= 160"
+        },
+        "strokeScoreType": {
+          ".validate": "newData.isString() && (newData.val() === '' || newData.val() === 'nihss' || newData.val() === 'rankin')"
+        },
+        "strokeScoreValue": {
+          ".validate": "newData.isString() && (newData.val() === '' || (newData.parent().child('strokeScoreType').val() === 'rankin' && newData.val().matches(/^[0-6]$/)) || (newData.parent().child('strokeScoreType').val() === 'nihss' && newData.val().matches(/^([0-9]|1[0-3])$/)))"
+        },
+        "createdAt": {
+          ".validate": "newData.isString()"
+        },
+        "updatedAt": {
+          ".validate": "newData.isString()"
+        },
+        "$other": {
+          ".validate": false
+        }
+      }
+    },
+
+    "sessions": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": "auth != null && auth.uid === $uid",
+        ".indexOn": ["createdAt", "startedAt", "status"],
+
+        "$sessionId": {
+          ".validate": "newData.hasChildren(['startedAt', 'status', 'createdAt', 'updatedAt'])",
+          "startedAt": {
+            ".validate": "newData.isString()"
+          },
+          "endedAt": {
+            ".validate": "newData.isString()"
+          },
+          "durationSeconds": {
+            ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 86400"
+          },
+          "status": {
+            ".validate": "newData.isString() && (newData.val() === 'started' || newData.val() === 'completed' || newData.val() === 'cancelled')"
+          },
+          "notes": {
+            ".validate": "newData.isString() && newData.val().length <= 1000"
+          },
+          "source": {
+            ".validate": "newData.isString() && newData.val().length <= 60"
+          },
+          "createdAt": {
+            ".validate": "newData.isString()"
+          },
+          "updatedAt": {
+            ".validate": "newData.isString()"
+          },
+          "$other": {
+            ".validate": false
+          }
+        }
+      }
+    },
+
+    "exercise_results": {
+      "$uid": {
+        ".read": "auth != null && auth.uid === $uid",
+        ".write": "auth != null && auth.uid === $uid",
+        ".indexOn": ["createdAt", "startedAt", "category", "status", "sessionId"],
+
+        "$resultId": {
+          ".validate": "newData.hasChildren(['exerciseKey', 'category', 'startedAt', 'status', 'createdAt', 'updatedAt'])",
+          "sessionId": {
+            ".validate": "newData.isString() || newData.val() === null"
+          },
+          "exerciseKey": {
+            ".validate": "newData.isString() && newData.val().length >= 1 && newData.val().length <= 120"
+          },
+          "category": {
+            ".validate": "newData.isString() && (newData.val() === 'memory' || newData.val() === 'attention' || newData.val() === 'coordination' || newData.val() === 'trajectory' || newData.val() === 'language' || newData.val() === 'quiz' || newData.val() === 'robot')"
+          },
+          "startedAt": {
+            ".validate": "newData.isString()"
+          },
+          "endedAt": {
+            ".validate": "newData.isString()"
+          },
+          "durationSeconds": {
+            ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 86400"
+          },
+          "score": {
+            ".validate": "newData.isNumber()"
+          },
+          "maxScore": {
+            ".validate": "newData.isNumber() && newData.val() >= 0"
+          },
+          "status": {
+            ".validate": "newData.isString() && (newData.val() === 'started' || newData.val() === 'completed' || newData.val() === 'failed' || newData.val() === 'abandoned')"
+          },
+          "metadata": {
+            ".validate": "newData.isString() || newData.hasChildren() || newData.val() === null",
+            "$metadataKey": {
+              ".validate": true
+            }
+          },
+          "createdAt": {
+            ".validate": "newData.isString()"
+          },
+          "updatedAt": {
+            ".validate": "newData.isString()"
+          },
+          "$other": {
+            ".validate": false
+          }
+        }
+      }
+    }
+  }
+}

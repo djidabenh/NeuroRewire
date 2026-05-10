@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neuro ReWire - Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+</head>
+<body>
+
+<div class="page active" id="page-app" style="display:flex;">
+    <aside class="sb">
+        <div class="sb-hd">
+            <div class="sb-sq">
+                <svg viewBox="0 0 24 24">
+                    <path d="M9.5 2a2.5 2.5 0 0 1 4.9.44C16.1 3 17.5 4.4 17.5 6c0 .34-.04.67-.11 1H18a3 3 0 0 1 3 3c0 1.1-.6 2.1-1.5 2.6A3 3 0 0 1 18 18h-.5a2.5 2.5 0 0 1-4.9.44A2.5 2.5 0 0 1 9.5 16H9a3 3 0 0 1-1.5-5.6A3 3 0 0 1 9 4h.11A2.5 2.5 0 0 1 9.5 2z"/>
+                </svg>
+            </div>
+            <div class="sb-nm">
+                Neuro ReWire
+                <span id="sidebar-subtitle">لوحة المريض</span>
+            </div>
+        </div>
+
+        <nav class="sb-nav">
+            <div class="ni on">
+                <svg viewBox="0 0 24 24">
+                    <rect x="3" y="3" width="7" height="7" rx="1"/>
+                    <rect x="14" y="3" width="7" height="7" rx="1"/>
+                    <rect x="3" y="14" width="7" height="7" rx="1"/>
+                    <rect x="14" y="14" width="7" height="7" rx="1"/>
+                </svg>
+                <span id="nav-dashboard">الرئيسية</span>
+            </div>
+
+            <div class="ni" onclick="window.location.href='/exercises'">
+                <svg viewBox="0 0 24 24">
+                    <rect x="2" y="6" width="20" height="12" rx="2"/>
+                    <path d="M6 12h4M8 10v4"/>
+                    <circle cx="15" cy="11" r="1" fill="currentColor"/>
+                    <circle cx="18" cy="13" r="1" fill="currentColor"/>
+                </svg>
+                <span id="nav-exercises">التمارين</span>
+            </div>
+
+            <div class="ni" onclick="window.location.href='/progress'">
+                <svg viewBox="0 0 24 24">
+                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                </svg>
+                <span id="nav-progress">التقدم</span>
+            </div>
+
+            <div class="ni" onclick="window.location.href='/avc'">
+                <svg viewBox="0 0 24 24">
+                    <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                </svg>
+                <span id="nav-avc">الوقاية من السكتة الدماغية</span>
+            </div>
+
+            <div class="ni" onclick="window.location.href='/motor'">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 3a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3H6a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3V6a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/>
+                </svg>
+                <span id="nav-motor">الحركي والتقييم</span>
+            </div>
+
+            <div class="ni" onclick="window.location.href='/settings'">
+                <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="3"/>
+                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                </svg>
+                <span id="nav-settings">الإعدادات</span>
+            </div>
+        </nav>
+
+        <div class="sb-bt">
+            <div class="sb-ll">
+                <button class="slp" type="button" onclick="setDashboardLang('fr')">FR</button>
+                <button class="slp on" type="button" onclick="setDashboardLang('ar')">AR</button>
+                <button class="slp" type="button" onclick="setDashboardLang('en')">EN</button>
+            </div>
+
+            <button class="logbtn" onclick="logout()">
+                <svg viewBox="0 0 24 24">
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+                    <polyline points="16 17 21 12 16 7"/>
+                    <line x1="21" y1="12" x2="9" y2="12"/>
+                </svg>
+                <span id="logout-text">تسجيل الخروج</span>
+            </button>
+        </div>
+    </aside>
+
+    <main class="main">
+        <div class="sec on" style="display:block;">
+            <section class="dashboard-premium-shell">
+                <div class="dashboard-premium-bg dashboard-premium-bg-a"></div>
+                <div class="dashboard-premium-bg dashboard-premium-bg-b"></div>
+
+                <div class="ph dashboard-hero-premium">
+                    <div class="dashboard-hero-copy premium">
+                        <div class="dashboard-hero-badge" id="dashboard-hero-badge">Neuro ReWire</div>
+                        <h2 id="dashboard-title">مرحبًا</h2>
+                        <p id="dashboard-subtitle">كل تمرين هو خطوة جديدة نحو تعافٍ أقوى وثقة أكبر وتقدم أفضل.</p>
+                    </div>
+
+                    <div class="dashboard-hero-visual premium" aria-hidden="true">
+                        <div class="dashboard-hero-glow"></div>
+                        <div class="dashboard-brain-badge premium">
+                            <svg viewBox="0 0 64 64">
+                                <path d="M25 10a8 8 0 0 1 15.7 1.4A10 10 0 0 1 50 21a9.8 9.8 0 0 1-1.2 4.8 9 9 0 0 1 3.2 6.9A9.3 9.3 0 0 1 43 42h-.8A8.2 8.2 0 0 1 34 50a8 8 0 0 1-6-2.6A8 8 0 0 1 14 42h-1A9 9 0 0 1 9.4 25.7 9.4 9.4 0 0 1 8 21a10 10 0 0 1 9.4-9.6A8 8 0 0 1 25 10z"
+                                      fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M32 14v36M24 20c2 2 3 4 3 7s-1 5-3 7M40 20c-2 2-3 4-3 7s1 5 3 7M20 30h8M36 30h8M24 40h8M32 24h8"
+                                      fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-stats-mini-grid">
+                    <div class="mini-stat-card">
+                        <div class="mini-stat-label" id="mini-stat-1-label">Jeux terminés</div>
+                        <div class="mini-stat-value" id="mini-stat-1-value">0</div>
+                    </div>
+                    <div class="mini-stat-card">
+                        <div class="mini-stat-label" id="mini-stat-2-label">Score moyen</div>
+                        <div class="mini-stat-value" id="mini-stat-2-value">0%</div>
+                    </div>
+                    <div class="mini-stat-card">
+                        <div class="mini-stat-label" id="mini-stat-3-label">Catégories actives</div>
+                        <div class="mini-stat-value" id="mini-stat-3-value">0</div>
+                    </div>
+                    <div class="mini-stat-card">
+                        <div class="mini-stat-label" id="mini-stat-4-label">Temps total</div>
+                        <div class="mini-stat-value" id="mini-stat-4-value">0m</div>
+                    </div>
+                </div>
+
+                <div class="dashboard-creative-grid dashboard-premium-grid">
+                    <div class="dashboard-premium-card dashboard-card-mission glass-card">
+                        <div class="dashboard-mini-header premium">
+                            <span class="dashboard-mini-dot"></span>
+                            <span id="mission-card-title">مهمة اليوم</span>
+                        </div>
+
+                        <p class="dashboard-card-note" id="mission-card-text">
+                            اختر فئة واحدة وابدأ تمرينًا قصيرًا اليوم.
+                        </p>
+
+                        <div class="dashboard-mission-actions premium">
+                            <button class="dashboard-soft-btn premium" onclick="openMissionCategory('memory')">
+                                <span class="mission-icon">
+                                    <svg viewBox="0 0 24 24"><path d="M9 4a3 3 0 0 1 6 0 4 4 0 0 1 4 4 4 4 0 0 1-1 2.6A4 4 0 0 1 19 18a4 4 0 0 1-4 4 3 3 0 0 1-6 0 4 4 0 0 1-4-4 4 4 0 0 1 1-2.6A4 4 0 0 1 5 8a4 4 0 0 1 4-4z" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+                                </span>
+                                <span id="mission-btn-memory">الذاكرة</span>
+                            </button>
+
+                            <button class="dashboard-soft-btn premium" onclick="openMissionCategory('attention')">
+                                <span class="mission-icon">
+                                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+                                </span>
+                                <span id="mission-btn-attention">الانتباه</span>
+                            </button>
+
+                            <button class="dashboard-soft-btn premium" onclick="openMissionCategory('coordination')">
+                                <span class="mission-icon">
+                                    <svg viewBox="0 0 24 24"><path d="M7 7l10 10M17 7L7 17" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="7" cy="7" r="2"/><circle cx="17" cy="17" r="2"/><circle cx="17" cy="7" r="2"/><circle cx="7" cy="17" r="2"/></svg>
+                                </span>
+                                <span id="mission-btn-coordination">التنسيق</span>
+                            </button>
+
+                            <button class="dashboard-soft-btn premium" onclick="openMissionCategory('trajectory')">
+                                <span class="mission-icon">
+                                    <svg viewBox="0 0 24 24"><path d="M4 18c3-8 6-12 16-12" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M16 4h4v4" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+                                </span>
+                                <span id="mission-btn-trajectory">المسار</span>
+                            </button>
+
+                            <button class="dashboard-soft-btn premium" onclick="openMissionCategory('quiz')">
+                                <span class="mission-icon">
+                                    <svg viewBox="0 0 24 24"><path d="M9.09 9a3 3 0 1 1 5.82 1c0 2-3 2-3 4"/><circle cx="12" cy="17" r="1"/></svg>
+                                </span>
+                                <span id="mission-btn-quiz">السرعة والاختبارات</span>
+                            </button>
+
+                            <button class="dashboard-soft-btn premium" onclick="openMissionCategory('language')">
+                                <span class="mission-icon">
+                                    <svg viewBox="0 0 24 24"><path d="M4 5h16M8 5c0 7-2 10-4 12m8-12c0 7 2 10 4 12M8 13h8"/></svg>
+                                </span>
+                                <span id="mission-btn-language">اللغة</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-premium-card dashboard-card-cognitive glass-card">
+                        <div class="dashboard-mini-header premium">
+                            <span class="dashboard-mini-dot"></span>
+                            <span id="cognitive-card-title">الملف المعرفي</span>
+                        </div>
+                        <div class="dashboard-cognitive-wrap premium">
+                            <canvas id="cognitiveRadarChart" width="300" height="185"></canvas>
+                            <div class="dashboard-chart-orb chart-orb-a"></div>
+                            <div class="dashboard-chart-orb chart-orb-b"></div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-premium-card dashboard-motivation-card glass-card">
+    <div class="dashboard-motivation-topline">
+        <span class="motivation-shine"></span>
+        <span class="motivation-badge" id="motivation-card-title">Message motivation</span>
+    </div>
+
+    <div class="dashboard-motivation-illustration" aria-hidden="true">
+        <div class="motivation-illu-circle"></div>
+        <div class="motivation-illu-card">
+            <svg viewBox="0 0 120 120" class="motivation-illu-svg">
+                <defs>
+                    <linearGradient id="motivationGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#2C7080"></stop>
+                        <stop offset="100%" stop-color="#5AAABB"></stop>
+                    </linearGradient>
+                </defs>
+
+                <circle cx="60" cy="60" r="44" fill="url(#motivationGrad)" opacity="0.12"></circle>
+
+                <path d="M60 22c-8 0-14 6-14 14 0 3 1 6 2.5 8.4C41 47.4 36 54.5 36 63c0 13 11 24 24 24s24-11 24-24c0-8.5-5-15.6-12.5-18.6C73 42 74 39 74 36c0-8-6-14-14-14z"
+                      fill="url(#motivationGrad)"></path>
+
+                <path d="M60 30v36M50 42c5 3 7 7 7 12M70 42c-5 3-7 7-7 12M49 58h9M62 58h9"
+                      fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"></path>
+
+                <circle cx="46" cy="30" r="4" fill="#BFEAF2"></circle>
+                <circle cx="82" cy="38" r="3.5" fill="#D8F5FA"></circle>
+                <circle cx="39" cy="73" r="3.5" fill="#D8F5FA"></circle>
+                <circle cx="83" cy="78" r="4" fill="#BFEAF2"></circle>
+
+                <path d="M34 92c8-8 16-12 26-12 11 0 20 4 28 12" fill="none" stroke="#7AAEBB" stroke-width="4" stroke-linecap="round"></path>
+            </svg>
+        </div>
+    </div>
+
+    <p class="dashboard-motivation-text" id="motivation-card-text">
+        Chaque petit effort compte. Même une courte séance aujourd’hui peut renforcer votre confiance, stimuler votre cerveau et vous rapprocher d’un progrès durable. Continuez pas à pas, car la régularité crée les plus belles améliorations.
+    </p>
+</div>
+
+                    <div class="dashboard-premium-card dashboard-card-overview glass-card">
+                        <div class="dashboard-mini-header premium">
+                            <span class="dashboard-mini-dot"></span>
+                            <span id="overview-card-title">نظرة على الفئات</span>
+                        </div>
+                        <div id="dashboardCategoryOverview" class="dashboard-category-overview"></div>
+                        <p class="dashboard-card-note" id="overview-card-note">
+                            استكشف تقدمك عبر الفئات المختلفة بطريقة بسيطة وواضحة.
+                        </p>
+                    </div>
+
+                    <div class="dashboard-premium-card dashboard-card-avc-edu glass-card">
+                        <div class="dashboard-mini-header premium">
+                            <span class="dashboard-mini-dot"></span>
+                            <span id="avc-edu-title">مخطط تعليمي AVC</span>
+                        </div>
+
+                        <p class="dashboard-card-note avc-edu-subtitle" id="avc-edu-subtitle">
+                            التعرّف السريع على العلامات الأساسية يساعد على التدخل بسرعة.
+                        </p>
+
+                        <div class="avc-infographic">
+                            <div class="avc-side avc-side-left">
+                                <div class="avc-edu-item face">
+                                    <div class="avc-edu-item-icon avc-svg-icon">
+                                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                                            <circle cx="12" cy="8" r="3.2"></circle>
+                                            <path d="M7.5 19c.9-2.7 3.2-4.2 4.5-4.2 2.6 0 4.9 1.7 5.5 4.2"></path>
+                                            <path d="M10.2 10.8c.8.8 1.7 1.2 3.1 1.2"></path>
+                                            <path d="M9 13.3c1.8 1.1 4.4 1 6.2-.3"></path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <strong id="avc-face-title">Visage</strong>
+                                        <p id="avc-face-text">Déformation soudaine du visage.</p>
+                                    </div>
+                                </div>
+
+                                <div class="avc-edu-arrow arrow-left-top"></div>
+
+                                <div class="avc-edu-item arm">
+                                    <div class="avc-edu-item-icon avc-svg-icon">
+                                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                                            <path d="M7 14c1.1-2.9 2-5.5 4.3-7.4"></path>
+                                            <path d="M11.3 6.6c1.1-.4 2.2-.4 3.1.2 1 .7 1.5 1.7 1.6 3"></path>
+                                            <path d="M8.5 14.5l2.4 2.6c.8.9 2.3 1 3.2.1l2-1.9c.8-.8 1-2 .5-3l-1.4-2.8"></path>
+                                            <path d="M5 16.5h4"></path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <strong id="avc-arm-title">Bras</strong>
+                                        <p id="avc-arm-text">Faiblesse ou difficulté à lever un bras.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="avc-center-visual">
+                                <div class="avc-center-halo"></div>
+
+                                <div class="avc-brain-card">
+                                    <div class="avc-brain-svg-wrap">
+                                        <svg class="avc-brain-svg" viewBox="0 0 220 220" aria-hidden="true">
+                                            <defs>
+                                                <linearGradient id="brainGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                                    <stop offset="0%" stop-color="#2C7080"/>
+                                                    <stop offset="55%" stop-color="#3D8FA0"/>
+                                                    <stop offset="100%" stop-color="#5AAABB"/>
+                                                </linearGradient>
+                                            </defs>
+
+                                            <ellipse cx="110" cy="108" rx="72" ry="58" fill="url(#brainGrad)" opacity="0.18"></ellipse>
+
+                                            <path d="M87 48c-16 0-29 13-29 29 0 7 2 13 6 18-6 5-10 13-10 22 0 16 13 29 29 29h10v14h-5c-7 0-13 6-13 13v1h70v-1c0-7-6-13-13-13h-5v-14h10c16 0 29-13 29-29 0-9-4-17-10-22 4-5 6-11 6-18 0-16-13-29-29-29-8 0-15 3-20 8-5-5-12-8-20-8z"
+                                                  fill="url(#brainGrad)"></path>
+
+                                            <path d="M110 55v90M88 72c8 6 10 14 10 23s-2 16-10 22M132 72c-8 6-10 14-10 23s2 16 10 22M80 95h18M122 95h18M86 122h20M114 76h18"
+                                                  fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" opacity=".95"></path>
+
+                                            <circle class="brain-pulse-dot dot-a" cx="78" cy="85" r="5" fill="#ffffff"></circle>
+                                            <circle class="brain-pulse-dot dot-b" cx="144" cy="86" r="4.5" fill="#DFF7FF"></circle>
+                                            <circle class="brain-pulse-dot dot-c" cx="102" cy="124" r="4.5" fill="#ffffff"></circle>
+                                            <circle class="brain-pulse-dot dot-d" cx="132" cy="118" r="4" fill="#E7FBFF"></circle>
+                                        </svg>
+                                    </div>
+
+                                    <div class="avc-center-label">AVC</div>
+                                    <div class="avc-center-text" id="avc-center-text">Agir vite</div>
+                                </div>
+                            </div>
+
+                            <div class="avc-side avc-side-right">
+                                <div class="avc-edu-item speech">
+                                    <div class="avc-edu-item-icon avc-svg-icon">
+                                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                                            <path d="M5 6.5a3.5 3.5 0 0 1 3.5-3.5h7A3.5 3.5 0 0 1 19 6.5v5A3.5 3.5 0 0 1 15.5 15H11l-4 3v-3.4A3.5 3.5 0 0 1 5 11.5z"></path>
+                                            <path d="M9 8.3c1 .7 2 .7 3 0"></path>
+                                            <path d="M9 11.1c1.2.6 2.7.6 3.9 0"></path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <strong id="avc-speech-title">Parole</strong>
+                                        <p id="avc-speech-text">Paroles troubles ou difficiles à comprendre.</p>
+                                    </div>
+                                </div>
+
+                                <div class="avc-edu-arrow arrow-right-top"></div>
+
+                                <div class="avc-edu-item emergency">
+                                    <div class="avc-edu-item-icon avc-svg-icon emergency-icon">
+                                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                                            <path d="M12 3l1.9 4.4L18 9.3l-4.1 1.8L12 16l-1.9-4.9L6 9.3l4.1-1.9z"></path>
+                                            <path d="M4 20h16"></path>
+                                            <path d="M7 17.5h10"></path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <strong id="avc-emergency-title">Urgence</strong>
+                                        <p id="avc-emergency-text">Appelez immédiatement les urgences.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-premium-card dashboard-card-avc glass-card">
+                        <div class="dashboard-mini-header premium">
+                            <span class="dashboard-mini-dot"></span>
+                            <span id="prevention-card-title">تذكير لطيف حول الوقاية من AVC</span>
+                        </div>
+
+                        <div class="dashboard-prevention-pills premium">
+                            <span class="dashboard-pill-soft premium" id="prevention-pill-1">الترطيب</span>
+                            <span class="dashboard-pill-soft premium" id="prevention-pill-2">الحركة الخفيفة</span>
+                            <span class="dashboard-pill-soft premium" id="prevention-pill-3">الانتظام</span>
+                            <span class="dashboard-pill-soft premium" id="prevention-pill-4">الراحة</span>
+                        </div>
+
+                        <p class="dashboard-card-note" id="prevention-card-note">
+                            العادات الصغيرة المتكررة تصنع فرقًا كبيرًا في رحلة التعافي.
+                        </p>
+
+                        <button class="dashboard-cta-btn premium" onclick="window.location.href='/avc'" id="prevention-card-button">
+                            عرض نصائح الوقاية
+                        </button>
+                    </div>
+
+                    <div class="dashboard-premium-card glass-card dashboard-rhythm-card">
+                        <div class="dashboard-mini-header premium">
+                            <span class="dashboard-mini-dot"></span>
+                            <span id="rhythm-card-title">Rythme de la semaine</span>
+                        </div>
+                        <div class="dashboard-rhythm-bar">
+                            <div class="dashboard-rhythm-fill" id="dashboardRhythmFill"></div>
+                        </div>
+                        <div class="dashboard-rhythm-meta">
+                            <span id="rhythm-left-label">Progression</span>
+                            <strong id="dashboardRhythmValue">0%</strong>
+                        </div>
+                        <p class="dashboard-card-note" id="rhythm-card-text">
+                            Garder un rythme régulier aide à renforcer la récupération sur la durée.
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+</div>
+
+<script type="module" src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>
